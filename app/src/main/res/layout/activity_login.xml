@@ -21,7 +21,7 @@
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入用户账号"/>
+            android:hint="请输入用户名"/>
     </LinearLayout>
 
     <LinearLayout

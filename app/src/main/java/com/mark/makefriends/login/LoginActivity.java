@@ -1,6 +1,7 @@
 package com.mark.makefriends.login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +38,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.login:
+
                 if(userName.getText().toString().equals("") || password.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "账号密码不能为空!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "用户名密码不能为空!", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 BmobUser bu2 = new BmobUser();
@@ -53,26 +55,18 @@ public class LoginActivity extends Activity implements View.OnClickListener{
 
                     @Override
                     public void onFailure(int i, String s) {
-                        Toast.makeText(getApplicationContext(), "登录失败!", Toast.LENGTH_SHORT).show();
+                        if(i == 101){
+                            Toast.makeText(getApplicationContext(), "登录失败,请先注册！", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
                 break;
 
             case R.id.register:
-                BmobUser bu = new BmobUser();
-                bu.setUsername(userName.getText().toString());
-                bu.setPassword(password.getText().toString());
-                bu.signUp(this, new SaveListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(getApplicationContext(), "注册成功!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(int i, String s) {
-                        Toast.makeText(getApplicationContext(), "注册失败!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Intent intent = new Intent();
+                intent.setClass(this, RegisterActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

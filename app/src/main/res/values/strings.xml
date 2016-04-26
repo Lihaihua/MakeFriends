@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">MakeFriends</string>
-    <string name="user_name">账号</string>
+    <string name="user_name">用户名</string>
     <string name="password">密码</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
-
+    <string name="phone">手机号码</string>
+    <string name="email">邮箱</string>
+    <string name="res_hints">提示：手机号必须填写才能完成注册</string>
 </resources>
