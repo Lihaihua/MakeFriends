@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mark.makefriends.R;
+import com.mark.makefriends.navigationtabbar.HorizontalNtbActivity;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
@@ -19,11 +20,14 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     private EditText password;
     private Button loginBtn;
     private Button registerBtn;
+    private Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mActivity = this;
 
         userName = (EditText)findViewById(R.id.user_name);
         password = (EditText)findViewById(R.id.password);
@@ -38,7 +42,6 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.login:
-
                 if(userName.getText().toString().equals("") || password.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "用户名密码不能为空!", Toast.LENGTH_SHORT).show();
                     break;
@@ -49,8 +52,10 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 bu2.login(this, new SaveListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(getApplicationContext(), "登录成功!", Toast.LENGTH_SHORT).show();
-
+                        Intent i = new Intent();
+                        i.setClass(mActivity, HorizontalNtbActivity.class);
+                        startActivity(i);
+                        //Toast.makeText(getApplicationContext(), "登录成功!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
