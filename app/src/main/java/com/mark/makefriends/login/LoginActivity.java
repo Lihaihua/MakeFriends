@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.R;
 import com.mark.makefriends.navigationtabbar.HorizontalNtbActivity;
+import com.mark.makefriends.support.CircularImage;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
@@ -19,8 +21,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     private EditText userName;
     private EditText password;
     private Button loginBtn;
-    private Button registerBtn;
+    private TextView register;
     private Activity mActivity;
+    CircularImage cover_user_photo1,cover_user_photo2,cover_user_photo3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,17 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         userName = (EditText)findViewById(R.id.user_name);
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button)findViewById(R.id.login);
-        registerBtn = (Button)findViewById(R.id.register);
+        register = (TextView)findViewById(R.id.register);
 
         loginBtn.setOnClickListener(this);
-        registerBtn.setOnClickListener(this);
+        register.setOnClickListener(this);
+
+        cover_user_photo1 = (CircularImage) findViewById(R.id.cover_user_photo1);
+        cover_user_photo2 = (CircularImage) findViewById(R.id.cover_user_photo2);
+        cover_user_photo3 = (CircularImage) findViewById(R.id.cover_user_photo3);
+        cover_user_photo1.setImageResource(R.drawable.pic1);
+        cover_user_photo2.setImageResource(R.drawable.pic2);
+        cover_user_photo3.setImageResource(R.drawable.pic3);
     }
 
     @Override

@@ -2,63 +2,117 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/login_bg">
 
     <LinearLayout
+        android:layout_marginTop="35dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"/>
-        <EditText
-            android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入用户名"/>
+        android:gravity="center">
+        <com.mark.makefriends.support.CircularImage
+            android:id="@+id/cover_user_photo1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="34dp" />
+
+        <com.mark.makefriends.support.CircularImage
+            android:id="@+id/cover_user_photo2"
+            android:layout_width="75dp"
+            android:layout_height="75dp" />
+
+        <com.mark.makefriends.support.CircularImage
+            android:id="@+id/cover_user_photo3"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="34dp" />
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"/>
-        <EditText
-            android:id="@+id/password"
+        android:layout_height="84dp"
+        android:background="@drawable/login_bg"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入密码"
-            android:password="true"/>
+            android:layout_height="20dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/login_user"/>
+            <EditText
+                android:id="@+id/user_name"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_gravity="center_vertical"
+                android:hint="输入昵称"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/login_password"/>
+            <EditText
+                android:id="@+id/password"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_gravity="center_vertical"
+                android:password="true"
+                android:hint="输入密码"/>
+        </LinearLayout>
+
     </LinearLayout>
+
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/login" />
-    <Button
-        android:id="@+id/register"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/login_bt"
+        android:text="@string/login"
+        android:textColor="@color/white"/>
+
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/register"
-        />
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/find_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码"
+            android:textColor="@color/green"/>
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="新用户注册"
+            android:textColor="@color/green"/>
+    </RelativeLayout>
 </LinearLayout>

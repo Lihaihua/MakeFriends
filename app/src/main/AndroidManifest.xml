@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".login.RegisterActivity"/>
         <activity android:name=".navigationtabbar.HorizontalNtbActivity"/>
+        <activity android:name=".login.UploadImageActivity"/>
+        <activity android:name=".login.SelectPicActivity"/>
     </application>
 
 </manifest>

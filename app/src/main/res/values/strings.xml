@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">MakeFriends</string>
     <string name="user_name">用户名</string>
-    <string name="password">密码</string>
+    <string name="password">密\u0020\u0020\u0020\u0020码</string>
+    <string name="nickname">新昵称</string>
     <string name="login">登录</string>
-    <string name="register">注册</string>
-    <string name="phone">手机号码</string>
+    <string name="register">立即注册</string>
+    <string name="phone">手机号</string>
     <string name="email">邮箱</string>
+    <string name="check">确\u0020\u0020\u0020\u0020定</string>
     <string name="res_hints">提示：手机号必须填写才能完成注册</string>
+    <string name="camera">拍\u0020\u0020\u0020\u0020照</string>
+    <string name="album">相\u0020\u0020\u0020\u0020册</string>
 </resources>
