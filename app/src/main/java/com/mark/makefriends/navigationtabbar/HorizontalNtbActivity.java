@@ -19,6 +19,8 @@ import java.util.ArrayList;
  * Created by GIGAMOLE on 28.03.2016.
  */
 public class HorizontalNtbActivity extends Activity {
+    private View ll_back;
+    private TextView title;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -36,11 +38,15 @@ public class HorizontalNtbActivity extends Activity {
     }
 
     private void initUI() {
+        ll_back = (View)findViewById(R.id.ll_back);
+        ll_back.setVisibility(View.GONE);
+        title = (TextView)findViewById(R.id.tv_title);
+
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
         viewPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
-                return 5;
+                return 4;
             }
 
             @Override
@@ -71,17 +77,15 @@ public class HorizontalNtbActivity extends Activity {
         final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb_horizontal);
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
         models.add(new NavigationTabBar.Model(
-                getResources().getDrawable(R.drawable.ic_first), Color.parseColor(colors[0]), "Heart"));
+                getResources().getDrawable(R.drawable.yue_g), Color.parseColor(colors[0]), "约"));
         models.add(new NavigationTabBar.Model(
-                getResources().getDrawable(R.drawable.ic_second), Color.parseColor(colors[1]), "Cup"));
+                getResources().getDrawable(R.drawable.message_g), Color.parseColor(colors[1]), "消息"));
         models.add(new NavigationTabBar.Model(
-                getResources().getDrawable(R.drawable.ic_third), Color.parseColor(colors[2]), "Diploma"));
+                getResources().getDrawable(R.drawable.friends_g), Color.parseColor(colors[2]), "聊友"));
         models.add(new NavigationTabBar.Model(
-                getResources().getDrawable(R.drawable.ic_fourth), Color.parseColor(colors[3]), "Flag"));
-        models.add(new NavigationTabBar.Model(
-                getResources().getDrawable(R.drawable.ic_fifth), Color.parseColor(colors[4]), "Medal"));
+                getResources().getDrawable(R.drawable.me_g), Color.parseColor(colors[3]), "我"));
         navigationTabBar.setModels(models);
-        navigationTabBar.setViewPager(viewPager, 2);
+        navigationTabBar.setViewPager(viewPager, 0);
         navigationTabBar.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
@@ -91,6 +95,22 @@ public class HorizontalNtbActivity extends Activity {
             @Override
             public void onPageSelected(final int position) {
                 navigationTabBar.getModels().get(position).hideBadge();
+                switch (position) {
+                    case 0:
+                        title.setText("约");
+                        break;
+                    case 1:
+                        title.setText("消息");
+                        break;
+                    case 2:
+                        title.setText("聊友");
+                        break;
+                    case 3:
+                        title.setText("我");
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
@@ -115,19 +135,16 @@ public class HorizontalNtbActivity extends Activity {
                     final NavigationTabBar.Model model = navigationTabBar.getModels().get(i);
                     switch (i) {
                         case 0:
-                            model.setBadgeTitle("NTB");
+                            model.setBadgeTitle("约");
                             break;
                         case 1:
-                            model.setBadgeTitle("with");
+                            model.setBadgeTitle("消息");
                             break;
                         case 2:
-                            model.setBadgeTitle("title");
+                            model.setBadgeTitle("聊友");
                             break;
                         case 3:
-                            model.setBadgeTitle("badge");
-                            break;
-                        case 4:
-                            model.setBadgeTitle("777");
+                            model.setBadgeTitle("我");
                             break;
                         default:
                             break;

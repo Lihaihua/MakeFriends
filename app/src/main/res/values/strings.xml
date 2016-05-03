@@ -10,5 +10,6 @@
     <string name="check">确\u0020\u0020\u0020\u0020定</string>
     <string name="res_hints">提示：手机号必须填写才能完成注册</string>
     <string name="camera">拍\u0020\u0020\u0020\u0020照</string>
-    <string name="album">相\u0020\u0020\u0020\u0020册</string>
+    <string name="album">从相册选择</string>
+    <string name="back">返回</string>
 </resources>

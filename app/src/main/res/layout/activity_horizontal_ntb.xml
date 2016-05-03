@@ -7,11 +7,15 @@
     android:background="#423752"
     android:orientation="vertical">
 
+    <include layout="@layout/top_bar"
+        android:id="@+id/rl_top_bar"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_horizontal_ntb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/wrapper_ntb_horizontal"/>
+        android:layout_above="@+id/wrapper_ntb_horizontal"
+        android:layout_below="@id/rl_top_bar"/>
 
     <FrameLayout
         android:id="@+id/wrapper_ntb_horizontal"

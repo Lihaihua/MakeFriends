@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.R;
@@ -26,11 +27,17 @@ import cn.bmob.v3.listener.UploadFileListener;
 /**
  * Created by Administrator on 2016/5/2.
  */
-public class UploadImageActivity extends Activity implements View.OnClickListener{
+public class UploadImageActivity extends BaseActivity implements View.OnClickListener{
+    private View ll_back;
+    private TextView title;
     private ImageView roleHead;
     private ImageButton maleBtn;
     private ImageButton femaleBtn;
     private Button checkBtn;
+    private View fl_select_pic_type;
+
+    private Button CameraBtn;
+    private Button AlbumBtn;
 
     private static final int REQUEST_IMAGE_CAMERA = 1;
     private static final int REQUEST_IMAGE_ALBUM = 2;
@@ -43,10 +50,21 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
 
+        ll_back = (View)findViewById(R.id.ll_back);
+        title = (TextView)findViewById(R.id.tv_title);
+        title.setText("完善资料");
+        ll_back.setOnClickListener(this);
+
         roleHead = (ImageView)findViewById(R.id.role_head);
         maleBtn = (ImageButton)findViewById(R.id.maleBtn);
         femaleBtn = (ImageButton)findViewById(R.id.femaleBtn);
         checkBtn = (Button)findViewById(R.id.checkBtn);
+        fl_select_pic_type = (View)findViewById(R.id.fl_select_pic_type);
+
+        CameraBtn = (Button)findViewById(R.id.btn_camera);
+        AlbumBtn = (Button)findViewById(R.id.btn_album);
+        CameraBtn.setOnClickListener(this);
+        AlbumBtn.setOnClickListener(this);
 
         roleHead.setOnClickListener(this);
         checkBtn.setOnClickListener(this);
@@ -77,6 +95,7 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
         }
     }
 
+    private int count;
     /**
      * 压缩拍照得到的图片
      */
@@ -85,7 +104,8 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
         Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
         roleHead.setImageBitmap(bitmap);
 
-        filePath = uri.getPath();
+        //filePath = uri.getPath();
+        filePath = scaledFile.getAbsolutePath();
     }
     /**
      * 压缩相册得到的图片
@@ -93,7 +113,7 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
     private void dealAlbum(Intent data) {
         uri = data.getData();
         String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, proj, null, null,null);
+        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         String path = cursor.getString(column_index);
@@ -104,7 +124,8 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
         Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
         roleHead.setImageBitmap(bitmap);
 
-        filePath = uri.getPath();
+        //filePath = uri.getPath();
+        filePath = scaledFile.getAbsolutePath();
     }
 
     /**
@@ -135,7 +156,9 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
             @Override
             public void onSuccess() {
                 //bmobFile.getFileUrl(context)--返回的上传文件的完整地址
+                dismissProgressDialog();
                 Toast.makeText(getApplicationContext(), "头像上传成功！", Toast.LENGTH_SHORT).show();
+                finish();
             }
 
             @Override
@@ -151,37 +174,14 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
         });
     }
 
-//    public String getRealFilePath( final Context context, final Uri uri ) {
-//        if ( null == uri ) return null;
-//        final String scheme = uri.getScheme();
-//        String data = null;
-//        if ( scheme == null )
-//            data = uri.getPath();
-//        else if ( ContentResolver.SCHEME_FILE.equals( scheme ) ) {
-//            data = uri.getPath();
-//        } else if ( ContentResolver.SCHEME_CONTENT.equals( scheme ) ) {
-//            Cursor cursor = context.getContentResolver().query( uri, new String[] { MediaStore.Images.ImageColumns.DATA }, null, null, null );
-//            if ( null != cursor ) {
-//                if ( cursor.moveToFirst() ) {
-//                    int index = cursor.getColumnIndex( MediaStore.Images.ImageColumns.DATA );
-//                    if ( index > -1 ) {
-//                        data = cursor.getString( index );
-//                    }
-//                }
-//                cursor.close();
-//            }
-//        }
-//        return data;
-//    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.ll_back:
+                finish();
+                break;
             case R.id.role_head:
-                openCamera();
-//                Intent i = new Intent();
-//                i.setClass(this, SelectPicActivity.class);
-//                startActivity(i);
+                fl_select_pic_type.setVisibility(View.VISIBLE);
                 break;
             case R.id.maleBtn:
                 maleBtn.setSelected(true);
@@ -192,7 +192,16 @@ public class UploadImageActivity extends Activity implements View.OnClickListene
                 femaleBtn.setSelected(true);
                 break;
             case R.id.checkBtn:
+                showProgressDialog("正在上传头像...");
                 upLoadFile(filePath);
+                break;
+            case R.id.btn_camera:
+                openCamera();
+                fl_select_pic_type.setVisibility(View.GONE);
+                break;
+            case R.id.btn_album:
+                openAlbum();
+                fl_select_pic_type.setVisibility(View.GONE);
                 break;
             default:
                 break;
