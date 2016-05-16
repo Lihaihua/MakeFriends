@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MakeFriends</string>
+    <string name="app_name">约约</string>
     <string name="user_name">用户名</string>
     <string name="password">密\u0020\u0020\u0020\u0020码</string>
     <string name="nickname">新昵称</string>
@@ -12,4 +12,10 @@
     <string name="camera">拍\u0020\u0020\u0020\u0020照</string>
     <string name="album">从相册选择</string>
     <string name="back">返回</string>
+    <string name="open_drawer">open drawer</string>
+    <string name="close_drawer">close drawer</string>
+    <string name="yue">约约</string>
+    <string name="message">消息</string>
+    <string name="friends">好友</string>
+    <string name="setting">设置</string>
 </resources>
