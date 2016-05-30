@@ -26,7 +26,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private Button loginBtn;
     private TextView register;
     private Activity mActivity;
-    CircularImage cover_user_photo1,cover_user_photo2,cover_user_photo3;
+    public static CircularImage cover_user_photo1,cover_user_photo2,cover_user_photo3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         ll_back = (View)findViewById(R.id.ll_back);
         ll_back.setVisibility(View.GONE);
         title = (TextView)findViewById(R.id.tv_title);
-        title.setText("约");
+        title.setText(getResources().getText(R.string.app_name));
         userName = (EditText)findViewById(R.id.user_name);
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button)findViewById(R.id.login);

@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
-import com.mark.makefriends.until.MyApp;
+import com.mark.makefriends.utils.MyApp;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;

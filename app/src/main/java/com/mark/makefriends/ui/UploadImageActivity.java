@@ -1,9 +1,11 @@
 package com.mark.makefriends.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,18 +17,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.R;
+import com.mark.makefriends.bean.Photo;
+import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
 
 import java.io.File;
 
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 /**
  * Created by Administrator on 2016/5/2.
  */
 public class UploadImageActivity extends BaseActivity implements View.OnClickListener{
+    private Activity mActivity;
     private View ll_back;
     private TextView title;
     private ImageView roleHead;
@@ -48,6 +55,8 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
+
+        mActivity = this;
 
         ll_back = (View)findViewById(R.id.ll_back);
         title = (TextView)findViewById(R.id.tv_title);
@@ -148,15 +157,34 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
     }
 
     //上传头像
-    private void upLoadFile(String filePath){
-        BmobFile bmobFile = new BmobFile(new File(filePath));
+    private void upLoadFile(final String filePath){
+        final BmobFile bmobFile = new BmobFile(new File(filePath));
         bmobFile.uploadblock(this, new UploadFileListener() {
 
             @Override
             public void onSuccess() {
                 //bmobFile.getFileUrl(context)--返回的上传文件的完整地址
                 dismissProgressDialog();
-                Toast.makeText(getApplicationContext(), "头像上传成功！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "照片上传成功！", Toast.LENGTH_SHORT).show();
+
+                //添加用户和头像一对一关联
+                User user = BmobUser.getCurrentUser(mActivity, User.class);
+                Photo photo = new Photo();
+                photo.setImage(bmobFile);
+                photo.setOwner(user);
+                photo.save(mActivity, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+
+                    }
+                });
+
+                LoginActivity.cover_user_photo2.setImageURI(getImageUri(filePath));
                 finish();
             }
 
@@ -206,6 +234,10 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
             default:
                 break;
         }
+    }
+
+    private Uri getImageUri(String path) {
+        return Uri.fromFile(new File(path));
     }
 
 }
