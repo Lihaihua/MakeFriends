@@ -86,6 +86,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         if(i == ErrorCode.ERROR_NOT_REGISTER){
                             Toast.makeText(getApplicationContext(), "登录失败,请先注册！", Toast.LENGTH_SHORT).show();
                         }
+                        else if (i == ErrorCode.ERROR_NETWORK_NOT_NORMAL){
+                            Toast.makeText(getApplicationContext(), "网络异常(超时)！", Toast.LENGTH_SHORT).show();
+                        }
                         dismissProgressDialog();
                     }
                 });

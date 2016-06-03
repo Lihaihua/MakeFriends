@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Activity mActivity;
     private Uri imageUri;
 
+    private List<User> userList;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -72,6 +74,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initDrawerView();
         initSwipeView();
 
+    }
+
+    private void getAllUser(){
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.findObjects(this, new FindListener<User>() {
+            @Override
+            public void onSuccess(List<User> list) {
+                userList = list;
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
     }
 
     private void getAllUserHead(){
@@ -123,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initDrawerView(){
         getAllUserHead();
-        //getUserHead();
+        getUserHead();
         toolbar = (Toolbar)findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.yue);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
