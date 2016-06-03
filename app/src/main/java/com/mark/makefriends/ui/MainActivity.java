@@ -1,12 +1,16 @@
 package com.mark.makefriends.ui;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,13 +19,23 @@ import android.widget.Toast;
 
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
+import com.mark.makefriends.bean.Photo;
+import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.CircularImage;
+import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.mylibrary.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.bmob.push.lib.util.LogUtil;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.DownloadFileListener;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by Administrator on 2016/5/14.
@@ -45,17 +59,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button centerBtn;
     private List<Map<String, Object>> mData;
 
+    private Activity mActivity;
+    private Uri imageUri;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+
+        mActivity = this;
 
         initDrawerView();
         initSwipeView();
 
     }
 
+    private void getAllUserHead(){
+        Log.i("getAllUserHead", "getAllUserHead");
+        BmobQuery<Photo> query = new BmobQuery<Photo>();
+        query.findObjects(this, new FindListener<Photo>() {
+            @Override
+            public void onSuccess(List<Photo> list) {
+                Log.i("getAllUserHead", "getAllUserHead success");
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Log.i("getAllUserHead", "getAllUserHead fail");
+            }
+        });
+    }
+
+    private void getUserHead(){
+        User user = BmobUser.getCurrentUser(this, User.class);
+        BmobQuery<Photo> query = new BmobQuery<Photo>();
+        query.addWhereEqualTo("owner", user);
+        query.findObjects(this, new FindListener<Photo>() {
+            @Override
+            public void onSuccess(List<Photo> list) {
+                for (Photo photo : list){
+                   photo.getImage().download(mActivity, new DownloadFileListener() {
+                        @Override
+                        public void onSuccess(String savePath) {
+                            imageUri = BitmapUtil.getImageUri(savePath);
+                            userHead.setImageURI(imageUri);
+                        }
+
+                        @Override
+                        public void onFailure(int i, String s) {
+
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+    }
+
     private void initDrawerView(){
+        getAllUserHead();
+        //getUserHead();
         toolbar = (Toolbar)findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.yue);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
@@ -64,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         userHead = (CircularImage)findViewById(R.id.user_head);
         userHead.setImageResource(R.drawable.pic1);
+
         nickName = (TextView)findViewById(R.id.nick_name);
         edit = (TextView)findViewById(R.id.edit);
         yue = (LinearLayout)findViewById(R.id.yue);

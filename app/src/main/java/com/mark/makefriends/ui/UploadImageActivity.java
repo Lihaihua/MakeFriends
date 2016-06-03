@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,8 +19,10 @@ import android.widget.Toast;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Photo;
 import com.mark.makefriends.bean.User;
+import com.mark.makefriends.support.CheckCameraType;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
+import com.mark.makefriends.utils.BitmapUtil;
 
 import java.io.File;
 
@@ -28,6 +30,9 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
+
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
 
 /**
  * Created by Administrator on 2016/5/2.
@@ -50,6 +55,8 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
     private Uri uri;  //图片保存uri
     private File scaledFile;
     private String filePath;
+    private Bitmap bmp;//旋转后的图像
+    private Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -108,12 +115,22 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
      * 压缩拍照得到的图片
      */
     private void dealTakePhoto() {
+        int cameraId = -1;
+        Camera.CameraInfo info = new Camera.CameraInfo();
         scaledFile = ImageCompress.scal(uri);
-        Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
-        roleHead.setImageBitmap(bitmap);
+        bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
 
-        //filePath = uri.getPath();
-        filePath = scaledFile.getAbsolutePath();
+        if (bitmap.getWidth() > bitmap.getHeight()){
+            Matrix matrix = new Matrix();
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT){
+                matrix.postRotate(-90);
+            }else if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK){
+                matrix.postRotate(90);
+            }
+
+            bmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        }
+        roleHead.setImageBitmap(bmp);
     }
     /**
      * 压缩相册得到的图片
@@ -129,7 +146,7 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
         File imageFile = new File(path);
         uri = Uri.fromFile(imageFile);
         scaledFile = ImageCompress.scal(uri);
-        Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
+        bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
         roleHead.setImageBitmap(bitmap);
 
         //filePath = uri.getPath();
@@ -184,7 +201,7 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
                     }
                 });
 
-                LoginActivity.cover_user_photo2.setImageURI(getImageUri(filePath));
+                LoginActivity.cover_user_photo2.setImageBitmap(scalePic(bitmap));
                 finish();
             }
 
@@ -200,6 +217,21 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
                 Toast.makeText(getApplicationContext(), "头像上传失败！", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private Bitmap scalePic(Bitmap bitmap){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        //设置想要的大小
+        int newWidth = 240;
+        int newHeight = 240;
+        //计算缩放比例
+        float scaleWidth = ((float)newWidth) / width;
+        float scaleHeight = ((float)newHeight) / height;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
     }
 
     @Override
@@ -234,10 +266,6 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
             default:
                 break;
         }
-    }
-
-    private Uri getImageUri(String path) {
-        return Uri.fromFile(new File(path));
     }
 
 }

@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:background="@color/balck50"
         android:text="@string/camera"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:visibility="invisible"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
