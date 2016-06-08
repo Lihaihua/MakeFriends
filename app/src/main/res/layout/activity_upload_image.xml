@@ -15,7 +15,7 @@
             android:id="@+id/role_head"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:background="@drawable/upload_head"/>
         <LinearLayout
             android:orientation="horizontal"

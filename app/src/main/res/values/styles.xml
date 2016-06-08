@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -11,12 +11,20 @@
     <style name="NoActionBarAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="cropImageStyle">@style/Widget.CropImageView</item>
     </style>
 
     <style name="SwipeFlingTheme">
         <item name="rotation_degrees">15</item>
         <item name="min_adapter_stack">6</item>
         <item name="max_visible">4</item>
+    </style>
+
+    <style name="Widget.CropImageView" parent="android:Widget">
+        <item name="showThirds">true</item>
+        <item name="showCircle">false</item>
+        <item name="showHandles">always</item>
+        <item name="highlightColor">@color/highlight</item>
     </style>
 
 </resources>

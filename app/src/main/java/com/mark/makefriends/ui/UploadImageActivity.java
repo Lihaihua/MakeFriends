@@ -1,6 +1,7 @@
 package com.mark.makefriends.ui;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -23,7 +24,9 @@ import com.mark.makefriends.support.CheckCameraType;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
 import com.mark.makefriends.utils.BitmapUtil;
+import com.soundcloud.android.crop.Crop;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import cn.bmob.v3.BmobUser;
@@ -136,41 +139,65 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
      * 压缩相册得到的图片
      */
     private void dealAlbum(Intent data) {
-        uri = data.getData();
-        String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String path = cursor.getString(column_index);
-        System.out.println("path:"+path);
-        File imageFile = new File(path);
-        uri = Uri.fromFile(imageFile);
+//        uri = data.getData();
+//        String[] proj = { MediaStore.Images.Media.DATA };
+//        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
+//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//        cursor.moveToFirst();
+//        String path = cursor.getString(column_index);
+//        System.out.println("path:"+path);
+//        File imageFile = new File(path);
+//        uri = Uri.fromFile(imageFile);
+//        scaledFile = ImageCompress.scal(uri);
+//        bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
+//        roleHead.setImageBitmap(bitmap);
+//
+//        //filePath = uri.getPath();
+//        filePath = scaledFile.getAbsolutePath();
+        Uri uri = Crop.getOutput(data);
         scaledFile = ImageCompress.scal(uri);
-        bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
-        roleHead.setImageBitmap(bitmap);
-
-        //filePath = uri.getPath();
         filePath = scaledFile.getAbsolutePath();
+        bitmap = BitmapFactory.decodeFile(filePath);
+        roleHead.setImageBitmap(bitmap);
     }
 
+    private void beginCrop(Uri source){
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Crop.of(source, destination).asSquare().start(this);
+    }
+
+    private void handleCrop(int resultCode, Intent data){
+        if (resultCode == RESULT_OK){
+            dealAlbum(data);
+            //roleHead.setImageURI(Crop.getOutput(data));
+        }else if (resultCode == Crop.RESULT_ERROR){
+            Toast.makeText(this, Crop.getError(data).getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
     /**
      * 回调函数
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAMERA && resultCode == RESULT_OK) {
-            dealTakePhoto();
-        } else if (requestCode == REQUEST_IMAGE_ALBUM && resultCode == RESULT_OK) {
-            uri = data.getData();
-            if(uri!=null){
-                System.out.println(uri.getPath());
-                dealAlbum(data);
-            }else{
-                System.out.println("uri为空");
-            }
-        } else {
-
+        if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK){
+            beginCrop(data.getData());
+        }else if (requestCode == Crop.REQUEST_CROP){
+            handleCrop(resultCode, data);
         }
+
+//        if (requestCode == REQUEST_IMAGE_CAMERA && resultCode == RESULT_OK) {
+//            dealTakePhoto();
+//        } else if (requestCode == REQUEST_IMAGE_ALBUM && resultCode == RESULT_OK) {
+//            uri = data.getData();
+//            if(uri!=null){
+//                System.out.println(uri.getPath());
+//                dealAlbum(data);
+//            }else{
+//                System.out.println("uri为空");
+//            }
+//        } else {
+//
+//        }
     }
 
     //上传头像
@@ -241,7 +268,9 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.role_head:
-                fl_select_pic_type.setVisibility(View.VISIBLE);
+                roleHead.setImageDrawable(null);
+                //fl_select_pic_type.setVisibility(View.VISIBLE);
+                Crop.pickImage(this);
                 break;
             case R.id.maleBtn:
                 maleBtn.setSelected(true);

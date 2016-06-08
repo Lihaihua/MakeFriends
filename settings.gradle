@@ -1,1 +1,1 @@
-include ':app', ':swipecard'
+include ':app', ':swipecard', 'cropimage'

@@ -13,4 +13,5 @@
     <color name="white">#FFFFFF</color>
     <color name="login_bg">#F4F4F4</color>
     <color name="green">#66BF06</color>
+    <color name="highlight">#f3f3f3</color>
 </resources>
