@@ -2,6 +2,8 @@ package com.mark.makefriends;
 
 import android.app.Application;
 
+import com.mark.makefriends.support.dao.DBOpenHelper;
+
 import cn.bmob.v3.Bmob;
 
 /**
@@ -15,5 +17,7 @@ public class MyApplication extends Application{
         super.onCreate();
         app = this;
         Bmob.initialize(this,appId);
+        //DBOpenHelper dbOpenHelper = new DBOpenHelper(this);
+        //dbOpenHelper.getWritableDatabase();
     }
 }

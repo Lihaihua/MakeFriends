@@ -3,12 +3,15 @@ package com.mark.makefriends.utils;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -61,5 +64,28 @@ public class BitmapUtil {
 
     public static Uri getImageUri(String filePath){
         return Uri.fromFile(new File(filePath));
+    }
+
+    public static byte[] bitmap2Byte(Bitmap bitmap){
+        int size = bitmap.getWidth()*bitmap.getHeight()*4;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
+        int options = 100;
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        while (baos.toByteArray().length / 1024 >500){
+            baos.reset();
+            options -= 10;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);
+        }
+
+        byte[] imagedata = baos.toByteArray();
+        return imagedata;
+    }
+
+    public static Bitmap Byte2Bitmap(byte[] b){
+        if (b.length != 0){
+            return BitmapFactory.decodeByteArray(b, 0, b.length);
+        }else {
+            return null;
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.mark.makefriends.ui;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -14,19 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Photo;
 import com.mark.makefriends.bean.User;
-import com.mark.makefriends.support.CheckCameraType;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
-import com.mark.makefriends.utils.BitmapUtil;
 import com.soundcloud.android.crop.Crop;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import cn.bmob.v3.BmobUser;
@@ -35,20 +31,22 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
 
 /**
  * Created by Administrator on 2016/5/2.
  */
-public class UploadImageActivity extends BaseActivity implements View.OnClickListener{
+public class CompleteUserInfoActivity extends BaseActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener{
     private Activity mActivity;
     private View ll_back;
     private TextView title;
     private ImageView roleHead;
     private ImageButton maleBtn;
     private ImageButton femaleBtn;
+    private gender sex;
     private Button checkBtn;
     private View fl_select_pic_type;
+    private TextView tv_age;
+    private SeekBar seekBar;
 
     private Button CameraBtn;
     private Button AlbumBtn;
@@ -61,10 +59,12 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
     private Bitmap bmp;//旋转后的图像
     private Bitmap bitmap;
 
+    public enum gender{MALE, FEMALE}
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_image);
+        setContentView(R.layout.activity_complete_user_info);
 
         mActivity = this;
 
@@ -84,10 +84,14 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
         CameraBtn.setOnClickListener(this);
         AlbumBtn.setOnClickListener(this);
 
+        tv_age = (TextView)findViewById(R.id.tv_age);
+        seekBar = (SeekBar)findViewById(R.id.seekBar);
+
         roleHead.setOnClickListener(this);
         checkBtn.setOnClickListener(this);
         maleBtn.setOnClickListener(this);
         femaleBtn.setOnClickListener(this);
+        seekBar.setOnSeekBarChangeListener(this);
     }
 
     /**
@@ -228,7 +232,6 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
                     }
                 });
 
-                LoginActivity.cover_user_photo2.setImageBitmap(scalePic(bitmap));
                 finish();
             }
 
@@ -273,10 +276,12 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
                 Crop.pickImage(this);
                 break;
             case R.id.maleBtn:
+                sex = gender.MALE;
                 maleBtn.setSelected(true);
                 femaleBtn.setSelected(false);
                 break;
             case R.id.femaleBtn:
+                sex = gender.FEMALE;
                 maleBtn.setSelected(false);
                 femaleBtn.setSelected(true);
                 break;
@@ -297,4 +302,18 @@ public class UploadImageActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        tv_age.setText(Integer.toString(progress));
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
 }

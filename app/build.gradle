@@ -43,7 +43,8 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.okio:okio:1.4.0'
     compile 'com.android.support:support-v4:23.2.1'
-
     compile project(':swipecard')
     compile project(':cropimage')
+    compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.clough.android.androiddbviewer:androiddbviewer:1.0.0'
 }

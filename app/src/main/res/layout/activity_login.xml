@@ -13,24 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
-        <com.mark.makefriends.support.CircularImage
-            android:id="@+id/cover_user_photo1"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginRight="34dp"
-            android:visibility="invisible"/>
 
         <com.mark.makefriends.support.CircularImage
-            android:id="@+id/cover_user_photo2"
+            android:id="@+id/cover_user_photo"
             android:layout_width="75dp"
             android:layout_height="75dp" />
-
-        <com.mark.makefriends.support.CircularImage
-            android:id="@+id/cover_user_photo3"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="34dp"
-            android:visibility="invisible"/>
     </LinearLayout>
 
     <LinearLayout

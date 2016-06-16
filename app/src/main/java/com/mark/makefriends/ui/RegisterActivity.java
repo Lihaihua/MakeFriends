@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
+import com.mark.makefriends.support.dao.User;
+import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
 
 import cn.bmob.v3.BmobUser;
@@ -68,8 +70,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         dismissProgressDialog();
                         Toast.makeText(getApplicationContext(), "注册成功!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent();
-                        intent.setClass(getApplicationContext(), UploadImageActivity.class);
+                        intent.setClass(getApplicationContext(), CompleteUserInfoActivity.class);
                         startActivity(intent);
+
+                        //注册成功后将用户名密码存储在本地数据库
+                        User user = new UserDao(RegisterActivity.this);
+                        String name = userName.getText().toString();
+                        String passwd =  password.getText().toString();
+                        Object[] params = {name, passwd, 0, 0, "暂无"};
+                        user.addUser(params);
                         finish();
                     }
 

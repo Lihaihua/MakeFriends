@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void getUserHead(){
-        User user = BmobUser.getCurrentUser(this, User.class);
+    public void getUserHead(){
+        final User user = BmobUser.getCurrentUser(this, User.class);
         BmobQuery<Photo> query = new BmobQuery<Photo>();
         query.addWhereEqualTo("owner", user);
         query.findObjects(this, new FindListener<Photo>() {
@@ -119,7 +119,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onSuccess(String savePath) {
                             imageUri = BitmapUtil.getImageUri(savePath);
-                            userHead.setImageURI(imageUri);
+                            if (imageUri == null){
+                                userHead.setImageResource(R.drawable.logo);
+                            }else {
+                                userHead.setImageURI(imageUri);
+                            }
                         }
 
                         @Override
