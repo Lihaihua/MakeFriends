@@ -60,6 +60,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 showProgressDialog("正在注册...");
                 final BmobUser bu = new BmobUser();
                 bu.setUsername(userName.getText().toString());
+                bu.setEmail(userName.getText().toString());
                 bu.setPassword(password.getText().toString());
                 bu.setMobilePhoneNumber(phone.getText().toString());
                 bu.signUp(this, new SaveListener() {

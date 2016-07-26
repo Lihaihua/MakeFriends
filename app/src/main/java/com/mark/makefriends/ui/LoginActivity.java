@@ -19,8 +19,11 @@ import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.BitmapUtil;
 
 import java.util.Map;
+import java.util.Objects;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
@@ -32,6 +35,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private EditText password;
     private Button loginBtn;
     private TextView register;
+    private TextView findPassword;
     private Activity mActivity;
     public static CircularImage cover_user_photo;
 
@@ -51,10 +55,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button)findViewById(R.id.login);
         register = (TextView)findViewById(R.id.register);
+        findPassword = (TextView)findViewById(R.id.find_password);
 
         ll_login.setOnTouchListener(this);
         loginBtn.setOnClickListener(this);
         register.setOnClickListener(this);
+        findPassword.setOnClickListener(this);
 
         cover_user_photo = (CircularImage) findViewById(R.id.cover_user_photo);
         cover_user_photo.setImageResource(R.drawable.loginlogo);
@@ -95,14 +101,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         i.setClass(mActivity, MainActivity.class);
                         startActivity(i);
                         dismissProgressDialog();
-
-                        //Toast.makeText(getApplicationContext(), "登录成功!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
                         if(i == ErrorCode.ERROR_NOT_REGISTER){
-                            Toast.makeText(getApplicationContext(), "登录失败,请先注册！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "登录失败！", Toast.LENGTH_SHORT).show();
                         }
                         else if (i == ErrorCode.ERROR_NETWORK_NOT_NORMAL){
                             Toast.makeText(getApplicationContext(), "网络异常(超时)！", Toast.LENGTH_SHORT).show();
@@ -117,6 +121,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 intent.setClass(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.find_password:
+                Intent intent1 = new Intent();
+                intent1.setClass(this,FindPasswordActivity.class);
+                startActivity(intent1);
             default:
                 break;
         }
