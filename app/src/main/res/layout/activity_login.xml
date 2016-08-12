@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
                 android:layout_gravity="center_vertical"
-                android:hint="输入邮箱"/>
+                android:hint="输入用户名"/>
         </LinearLayout>
 
         <LinearLayout

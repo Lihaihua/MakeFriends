@@ -33,6 +33,6 @@
         android:layout_gravity="bottom"
         android:textSize="10sp"
         android:textColor="#E339"
-        tools:text="@string/hello_world"/>
+        tools:text=""/>
 
 </FrameLayout>

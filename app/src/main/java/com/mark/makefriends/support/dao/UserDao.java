@@ -3,12 +3,11 @@ package com.mark.makefriends.support.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,11 +16,15 @@ import java.util.Objects;
 /**
  * Created by Administrator on 2016/6/12.
  */
-public class UserDao implements User{
-    private String addSql = "insert into user(name, password, sex, age, city) values(?, ?, ?, ?, ?)";
-    private String updateSql = "update user set name = ?, password = ?, sex = ?, age = ?, city = ? where id = ?";
-    private String selectSql = "select * from user where id = ?";
-    private String selectSum = "select count(*) from user";
+public class UserDao implements IUser {
+    private String insertHostUser = "insert into host_user(name, password, sex, age, city) values(?, ?, ?, ?, ?)";
+    private String updateHostUser = "update host_user set name = ?, password = ?, sex = ?, age = ?, city = ? where id = ?";
+    private String selectAllHostUserById = "select * from host_user where id = ?";
+    private String selectHostUserCount = "select count(*) from host_user";
+    //private String insertUser = "insert into user(objId, name, sex, age, city) values(?, ?, ?, ?, ?)";
+    private String insertUser = "insert into user(objId, name) values(?, ?)";
+    private String selectUserObjId = "select objId from user";
+    private String inserUserPhotoByUserId = "insert into user(image) values(?) where objId = ?";
 
     private DBOpenHelper helper = null;
     public UserDao(Context context){
@@ -34,7 +37,7 @@ public class UserDao implements User{
         SQLiteDatabase database = null;
         try{
             database = helper.getWritableDatabase();
-            database.execSQL(addSql, params);
+            database.execSQL(insertUser, params);
             flag = true;
         }catch (Exception e){
             e.printStackTrace();
@@ -47,17 +50,70 @@ public class UserDao implements User{
     }
 
     @Override
-    public boolean delUser(Object[] params) {
-        return false;
+    public List<String> selectUserObjId() {
+        List<String> userObjId = new ArrayList<String>();
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getReadableDatabase();
+            Cursor cursor = database.rawQuery(selectUserObjId, null);
+            while (cursor.moveToNext()){
+                userObjId.add(cursor.getString(0));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+        return userObjId;
     }
 
     @Override
-    public boolean updateUser(Object[] params) {
+    public void insertUserPhotoByUserId(Object[] params) {
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getWritableDatabase();
+            database.execSQL(inserUserPhotoByUserId, params);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+    }
+
+    @Override
+    public boolean addHostUser(Object[] params) {
         boolean flag = false;
         SQLiteDatabase database = null;
         try{
             database = helper.getWritableDatabase();
-            database.execSQL(updateSql);
+            database.execSQL(insertHostUser, params);
+            flag = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean delHostUser(Object[] params) {
+        return false;
+    }
+
+    @Override
+    public boolean updateHostUser(Object[] params) {
+        boolean flag = false;
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getWritableDatabase();
+            database.execSQL(updateHostUser);
             flag = true;
         }catch (Exception e){
             e.printStackTrace();
@@ -77,7 +133,7 @@ public class UserDao implements User{
         try {
             database = helper.getReadableDatabase();
             //声明一个游标，这个是行查询的操作，支持原生SQL语句的查询
-            Cursor cursor = database.rawQuery(selectSql, selectionArgs); //ID所在行查询
+            Cursor cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
             int colums = cursor.getColumnCount();//获得数据库的列的个数
             //cursor.moveToNext() 移动到下一条记录
             while (cursor.moveToNext()){
@@ -107,13 +163,13 @@ public class UserDao implements User{
     }
 
     @Override
-    public Bitmap getUserHead(String[] selectionArgs) {
+    public Bitmap getHostUserHead(String[] selectionArgs) {
         SQLiteDatabase database = null;
         Bitmap bmp = null;
         try {
             database = helper.getReadableDatabase();
             //声明一个游标，这个是行查询的操作，支持原生SQL语句的查询
-            Cursor cursor = database.rawQuery(selectSql, selectionArgs); //ID所在行查询
+            Cursor cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
             int colums = cursor.getColumnCount();//获得数据库的列的个数
             //cursor.moveToNext() 移动到下一条记录
             while (cursor.moveToNext()) {
@@ -141,7 +197,7 @@ public class UserDao implements User{
         long count = 0;
         try {
             database = helper.getReadableDatabase();
-            SQLiteStatement statement = database.compileStatement(selectSum);
+            SQLiteStatement statement = database.compileStatement(selectHostUserCount);
             count = statement.simpleQueryForLong();
         }catch (Exception e){
             e.printStackTrace();
@@ -153,6 +209,5 @@ public class UserDao implements User{
 
         return count;
     }
-
 
 }

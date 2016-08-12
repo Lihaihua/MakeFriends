@@ -70,7 +70,7 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
 
         ll_back = (View)findViewById(R.id.ll_back);
         title = (TextView)findViewById(R.id.tv_title);
-        title.setText("完善资料");
+        title.setText("上传照片");
         ll_back.setOnClickListener(this);
 
         roleHead = (ImageView)findViewById(R.id.role_head);
@@ -206,6 +206,11 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
 
     //上传头像
     private void upLoadFile(final String filePath){
+        if (filePath == null){
+            Toast.makeText(getApplicationContext(), "未选择头像!", Toast.LENGTH_SHORT).show();
+            dismissProgressDialog();
+            return;
+        }
         final BmobFile bmobFile = new BmobFile(new File(filePath));
         bmobFile.uploadblock(this, new UploadFileListener() {
 
@@ -216,21 +221,34 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
                 Toast.makeText(getApplicationContext(), "照片上传成功！", Toast.LENGTH_SHORT).show();
 
                 //添加用户和头像一对一关联
-                User user = BmobUser.getCurrentUser(mActivity, User.class);
-                Photo photo = new Photo();
-                photo.setImage(bmobFile);
-                photo.setOwner(user);
-                photo.save(mActivity, new SaveListener() {
+                final User user = new User();
+                user.setImage(bmobFile);
+                user.save(mActivity, new SaveListener() {
                     @Override
                     public void onSuccess() {
-
+                        BmobUser.getCurrentUser(mActivity, User.class);
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
-
+                        BmobUser.getCurrentUser(mActivity, User.class);
                     }
                 });
+//                User user = BmobUser.getCurrentUser(mActivity, User.class);
+//                Photo photo = new Photo();
+//                photo.setImage(bmobFile);
+//                photo.setOwner(user);
+//                photo.save(mActivity, new SaveListener() {
+//                    @Override
+//                    public void onSuccess() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int i, String s) {
+//
+//                    }
+//                });
 
                 finish();
             }

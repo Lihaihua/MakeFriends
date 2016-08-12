@@ -15,7 +15,8 @@ import java.io.ByteArrayOutputStream;
 public class DBOpenHelper extends SQLiteOpenHelper{
 
     private static String name = "makefriends.db";
-    private String createTbSql = "Create table user (id integer primary key autoincrement, name varchar(64), password varchar(64), sex integer, age integer, city varchar(64));";
+    private String createHostUserTable = "Create table host_user (id integer primary key autoincrement, name varchar(64), password varchar(64), sex integer, age integer, city varchar(64));";
+    private String createUserTable = "Create table user (objId varchar(64) primary key, name varchar(64), sex integer, age integer, city varchar(64), image varchar(255))";
     private static int version = 1;//更新数据库的版本号，此时会执行onUpgrade()方法
 
     public DBOpenHelper(Context context) {
@@ -24,7 +25,8 @@ public class DBOpenHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(createTbSql);
+        db.execSQL(createHostUserTable);
+        db.execSQL(createUserTable);
     }
 
     @Override

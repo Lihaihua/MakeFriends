@@ -2,7 +2,6 @@ package com.mark.makefriends.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +21,8 @@ import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Photo;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.CircularImage;
+import com.mark.makefriends.support.dao.IUser;
+import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.mylibrary.SwipeFlingAdapterView;
 
@@ -29,11 +30,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-import cn.bmob.push.lib.util.LogUtil;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initDrawerView();
         initSwipeView();
 
+        QueryUserTable();
     }
 
     private void getAllUser(){
@@ -91,20 +92,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void getAllUserHead(){
+    private void getUserPhotoByUserId(){
         Log.i("getAllUserHead", "getAllUserHead");
-        BmobQuery<Photo> query = new BmobQuery<Photo>();
-        query.findObjects(this, new FindListener<Photo>() {
-            @Override
-            public void onSuccess(List<Photo> list) {
-                Log.i("getAllUserHead", "getAllUserHead success");
-            }
+        IUser user = new UserDao(mActivity);
+        List<String> userObjIds = user.selectUserObjId();
 
-            @Override
-            public void onError(int i, String s) {
-                Log.i("getAllUserHead", "getAllUserHead fail");
-            }
-        });
+        for (String userObjId : userObjIds){
+            BmobQuery<Photo> query = new BmobQuery<Photo>();
+            query.addWhereEqualTo("owner", userObjId);
+            query.findObjects(this, new FindListener<Photo>() {
+                @Override
+                public void onSuccess(List<Photo> list) {
+                    Log.i("getAllUserHead", "getAllUserHead success");
+                    insertUserPhoto(list);
+                }
+
+                @Override
+                public void onError(int i, String s) {
+                    Log.i("getAllUserHead", "getAllUserHead fail");
+                }
+            });
+        }
+    }
+
+    private void insertUserPhoto(List<Photo> list){
+        String imgUrl = list.get(0).getImage().getUrl();
+        String userObjId = list.get(0).getOwner().getObjectId();
+        IUser user = new UserDao(mActivity);
+        Object[] params = {imgUrl, userObjId};
+        user.insertUserPhotoByUserId(params);
     }
 
     public void getUserHead(){
@@ -143,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initDrawerView(){
-        getAllUserHead();
         getUserHead();
         toolbar = (Toolbar)findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.yue);
@@ -152,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         actionBarDrawerToggle.syncState();
 
         userHead = (CircularImage)findViewById(R.id.user_head);
-        userHead.setImageResource(R.drawable.pic1);
+        userHead.setImageResource(R.drawable.logo);
 
         nickName = (TextView)findViewById(R.id.nick_name);
         edit = (TextView)findViewById(R.id.edit);
@@ -260,10 +275,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         flingContainer.getTopCardListener().selectLeft();
     }
 
+    private void QueryUserTable(){
+        BmobQuery<User> query = new BmobQuery<User>();
+        //query.setLimit(100);
+        query.findObjects(mActivity, new FindListener<User>(){
+
+            @Override
+            public void onSuccess(List<User> list) {
+                IUser userDao = new UserDao(MainActivity.this);
+                for (User user : list){
+                    String objId = user.getObjectId();
+                    String userName = user.getUsername();
+                    //int sex = user.getGender();
+                    //int age = user.getAge();
+                    //Object[] params = {objId, userName, sex, age};
+                    Object[] params = {objId, userName};
+                    userDao.addUser(params);
+                }
+                return;
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Toast.makeText(mActivity,s,Toast.LENGTH_SHORT).show();
+                return;
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.user_head:
+                getUserPhotoByUserId();
                 break;
             case R.id.nick_name:
                 break;

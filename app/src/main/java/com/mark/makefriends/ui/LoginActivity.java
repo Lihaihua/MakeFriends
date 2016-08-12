@@ -2,9 +2,7 @@ package com.mark.makefriends.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +12,12 @@ import android.widget.Toast;
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
 import com.mark.makefriends.support.CircularImage;
-import com.mark.makefriends.support.dao.User;
+import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
-import com.mark.makefriends.utils.BitmapUtil;
 
 import java.util.Map;
-import java.util.Objects;
 
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
@@ -74,7 +68,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void getUserName(){
-        User user = new UserDao(LoginActivity.this);
+        IUser user = new UserDao(LoginActivity.this);
         long count = user.getTableRowCount();
         String[] seleStr = {Integer.toString((int)count)};
         Map<String,String> us = user.selectSingleRcd(seleStr);

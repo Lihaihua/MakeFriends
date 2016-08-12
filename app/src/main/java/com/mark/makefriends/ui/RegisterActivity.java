@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
-import com.mark.makefriends.support.dao.User;
+import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
 
@@ -28,7 +28,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private TextView title;
     private EditText userName;
     private EditText password;
-    private EditText phone;
+    private EditText email;
     private Button registerBtn;
 
     @Override
@@ -43,9 +43,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         title.setText("注册");
         ll_back.setOnClickListener(this);
 
-        userName = (EditText)findViewById(R.id.userName);
-        password = (EditText)findViewById(R.id.password);
-        phone = (EditText)findViewById(R.id.phone);
+        userName = (EditText)findViewById(R.id.et_user_name);
+        password = (EditText)findViewById(R.id.et_password);
+        email = (EditText)findViewById(R.id.et_email);
         registerBtn = (Button)findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(this);
     }
@@ -60,9 +60,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 showProgressDialog("正在注册...");
                 final BmobUser bu = new BmobUser();
                 bu.setUsername(userName.getText().toString());
-                bu.setEmail(userName.getText().toString());
+                bu.setEmail(email.getText().toString());
                 bu.setPassword(password.getText().toString());
-                bu.setMobilePhoneNumber(phone.getText().toString());
                 bu.signUp(this, new SaveListener() {
                     @Override
                     public void onSuccess() {
@@ -75,11 +74,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         startActivity(intent);
 
                         //注册成功后将用户名密码存储在本地数据库
-                        User user = new UserDao(RegisterActivity.this);
+                        IUser user = new UserDao(RegisterActivity.this);
                         String name = userName.getText().toString();
                         String passwd =  password.getText().toString();
                         Object[] params = {name, passwd, 0, 0, "暂无"};
-                        user.addUser(params);
+                        user.addHostUser(params);
                         finish();
                     }
 
@@ -91,6 +90,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                 break;
                             case ErrorCode.ERROR_USER_ALREADY_HAVE:
                                 Toast.makeText(getApplicationContext(), "该昵称已被注册!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case ErrorCode.ERROR_EMAIL_ALREADY_USED:
+                                Toast.makeText(getApplicationContext(), "该邮箱已经注册过!", Toast.LENGTH_SHORT).show();
                                 break;
                             case ErrorCode.ERROR_PHONE_NUM_ALREADY_HAVE:
                                 Toast.makeText(getApplicationContext(), "该手机号已被注册!", Toast.LENGTH_SHORT).show();
