@@ -21,6 +21,7 @@ import com.mark.makefriends.bean.Photo;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
+import com.mark.makefriends.utils.MyApp;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
@@ -28,6 +29,7 @@ import java.io.File;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 import android.hardware.Camera;
@@ -204,6 +206,11 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
 //        }
     }
 
+    private void updateUserData(User user, UpdateListener listener){
+        user.setObjectId(MyApp.getCurrentUser().getObjectId());
+        user.update(this,listener);
+    }
+
     //上传头像
     private void upLoadFile(final String filePath){
         if (filePath == null){
@@ -216,39 +223,41 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
 
             @Override
             public void onSuccess() {
-                //bmobFile.getFileUrl(context)--返回的上传文件的完整地址
-                dismissProgressDialog();
-                Toast.makeText(getApplicationContext(), "照片上传成功！", Toast.LENGTH_SHORT).show();
-
-                //添加用户和头像一对一关联
-                final User user = new User();
-                user.setImage(bmobFile);
-                user.save(mActivity, new SaveListener() {
+                //返回上传文件的完整地址
+                String url = bmobFile.getFileUrl(CompleteUserInfoActivity.this);
+                User user1 = new User();
+                user1.setAvatar(url);
+                updateUserData(user1, new UpdateListener() {
                     @Override
                     public void onSuccess() {
-                        BmobUser.getCurrentUser(mActivity, User.class);
+
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
-                        BmobUser.getCurrentUser(mActivity, User.class);
+
                     }
                 });
-//                User user = BmobUser.getCurrentUser(mActivity, User.class);
-//                Photo photo = new Photo();
-//                photo.setImage(bmobFile);
-//                photo.setOwner(user);
-//                photo.save(mActivity, new SaveListener() {
-//                    @Override
-//                    public void onSuccess() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int i, String s) {
-//
-//                    }
-//                });
+
+                dismissProgressDialog();
+                Toast.makeText(getApplicationContext(), "照片上传成功！", Toast.LENGTH_SHORT).show();
+
+                //添加用户和头像一对一关联
+                User user = MyApp.getCurrentUser();
+                Photo photo = new Photo();
+                photo.setImage(bmobFile);
+                photo.setOwner(user);
+                photo.save(mActivity, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+
+                    }
+                });
 
                 finish();
             }

@@ -24,8 +24,10 @@ import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.BitmapUtil;
+import com.mark.makefriends.utils.MyApp;
 import com.mark.mylibrary.SwipeFlingAdapterView;
 
+import java.security.Policy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -123,8 +125,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user.insertUserPhotoByUserId(params);
     }
 
+    private void queryPhotoTable(){
+        final User user = MyApp.getCurrentUser();
+        final BmobQuery<Photo> query = new BmobQuery<Photo>();
+        query.findObjects(this, new FindListener<Photo>() {
+            @Override
+            public void onSuccess(List<Photo> list) {
+                query.setSkip(2);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+    }
+
+    /**
+     * 获得指定id的用户头像
+     */
     public void getUserHead(){
-        final User user = BmobUser.getCurrentUser(this, User.class);
+        final User user = MyApp.getCurrentUser();
         BmobQuery<Photo> query = new BmobQuery<Photo>();
         query.addWhereEqualTo("owner", user);
         query.findObjects(this, new FindListener<Photo>() {
@@ -159,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initDrawerView(){
+        queryPhotoTable();
         getUserHead();
         toolbar = (Toolbar)findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.yue);
@@ -284,12 +306,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSuccess(List<User> list) {
                 IUser userDao = new UserDao(MainActivity.this);
                 for (User user : list){
-                    String objId = user.getObjectId();
+                    String userId = user.getObjectId();
                     String userName = user.getUsername();
                     //int sex = user.getGender();
                     //int age = user.getAge();
                     //Object[] params = {objId, userName, sex, age};
-                    Object[] params = {objId, userName};
+                    Object[] params = {userId, userName};
                     userDao.addUser(params);
                 }
                 return;
@@ -307,7 +329,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.user_head:
-                getUserPhotoByUserId();
                 break;
             case R.id.nick_name:
                 break;

@@ -47,4 +47,5 @@ dependencies {
     compile project(':cropimage')
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.clough.android.androiddbviewer:androiddbviewer:1.0.0'
+
 }

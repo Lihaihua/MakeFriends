@@ -22,8 +22,8 @@ public class UserDao implements IUser {
     private String selectAllHostUserById = "select * from host_user where id = ?";
     private String selectHostUserCount = "select count(*) from host_user";
     //private String insertUser = "insert into user(objId, name, sex, age, city) values(?, ?, ?, ?, ?)";
-    private String insertUser = "insert into user(objId, name) values(?, ?)";
-    private String selectUserObjId = "select objId from user";
+    private String insertUser = "insert into user(userId, name) values(?, ?)";
+    private String selectUserObjId = "select userId from user";
     private String inserUserPhotoByUserId = "insert into user(image) values(?) where objId = ?";
 
     private DBOpenHelper helper = null;
