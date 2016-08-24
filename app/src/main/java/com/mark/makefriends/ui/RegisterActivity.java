@@ -9,13 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
+import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/4/26.
@@ -79,6 +82,27 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         String passwd =  password.getText().toString();
                         Object[] params = {name, passwd, 0, 0, "暂无"};
                         user.addHostUser(params);
+
+                        //建立_User和Person的一一关联
+                        final Person person = new Person();
+                        person.setUser(bu);
+                        person.save(getApplicationContext(), new SaveListener() {
+                            @Override
+                            public void onSuccess() {
+                                //更新本地user_person_id表
+                                String userObjId = bu.getObjectId();
+                                String perObjId = person.getObjectId();
+                                String[] params = {perObjId, userObjId};
+                                IUser user = new UserDao(RegisterActivity.this);
+                                user.addPersonUser(params);
+                             }
+
+                            @Override
+                            public void onFailure(int i, String s) {
+
+                            }
+                        });
+
                         finish();
                     }
 

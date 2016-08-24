@@ -31,7 +31,7 @@ allprojects {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     //    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     //bmob-push：Bmob的推送包
@@ -47,5 +47,5 @@ dependencies {
     compile project(':cropimage')
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.clough.android.androiddbviewer:androiddbviewer:1.0.0'
-
+    compile files('libs/AMap_Location_V2.8.0_20160811.jar')
 }

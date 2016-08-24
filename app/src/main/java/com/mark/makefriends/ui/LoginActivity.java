@@ -10,15 +10,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
+import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
+import com.mark.makefriends.utils.MyApp;
 
 import java.util.Map;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "MainActivity";
@@ -59,12 +63,39 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         cover_user_photo = (CircularImage) findViewById(R.id.cover_user_photo);
         cover_user_photo.setImageResource(R.drawable.loginlogo);
 
+        //更新用户地理位置
+        updateUserCity();
+    }
+
+    private void updateUserCity(){
+
+        IUser user = new UserDao(LoginActivity.this);
+        String userObjId = MyApp.getCurrentUser().getObjectId();
+        String[] seleStr = {userObjId};
+        String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
+
+        Person person = new Person();
+        person.setValue("location", MyApp.getCity());
+        person.update(getApplicationContext(), personObjId, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
     }
 
     @Override
     public void onResume(){
         super.onResume();
         getUserName();
+
+        //更新用户地理位置
+        updateUserCity();
     }
 
     private void getUserName(){

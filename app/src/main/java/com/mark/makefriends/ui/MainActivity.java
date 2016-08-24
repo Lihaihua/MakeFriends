@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
-import com.mark.makefriends.bean.Photo;
+import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.dao.IUser;
@@ -27,15 +26,12 @@ import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.MyApp;
 import com.mark.mylibrary.SwipeFlingAdapterView;
 
-import java.security.Policy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 
@@ -94,65 +90,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void getUserPhotoByUserId(){
-        Log.i("getAllUserHead", "getAllUserHead");
-        IUser user = new UserDao(mActivity);
-        List<String> userObjIds = user.selectUserObjId();
-
-        for (String userObjId : userObjIds){
-            BmobQuery<Photo> query = new BmobQuery<Photo>();
-            query.addWhereEqualTo("owner", userObjId);
-            query.findObjects(this, new FindListener<Photo>() {
-                @Override
-                public void onSuccess(List<Photo> list) {
-                    Log.i("getAllUserHead", "getAllUserHead success");
-                    insertUserPhoto(list);
-                }
-
-                @Override
-                public void onError(int i, String s) {
-                    Log.i("getAllUserHead", "getAllUserHead fail");
-                }
-            });
-        }
-    }
-
-    private void insertUserPhoto(List<Photo> list){
-        String imgUrl = list.get(0).getImage().getUrl();
-        String userObjId = list.get(0).getOwner().getObjectId();
-        IUser user = new UserDao(mActivity);
-        Object[] params = {imgUrl, userObjId};
-        user.insertUserPhotoByUserId(params);
-    }
-
-    private void queryPhotoTable(){
-        final User user = MyApp.getCurrentUser();
-        final BmobQuery<Photo> query = new BmobQuery<Photo>();
-        query.findObjects(this, new FindListener<Photo>() {
-            @Override
-            public void onSuccess(List<Photo> list) {
-                query.setSkip(2);
-            }
-
-            @Override
-            public void onError(int i, String s) {
-
-            }
-        });
-    }
 
     /**
      * 获得指定id的用户头像
      */
     public void getUserHead(){
         final User user = MyApp.getCurrentUser();
-        BmobQuery<Photo> query = new BmobQuery<Photo>();
-        query.addWhereEqualTo("owner", user);
-        query.findObjects(this, new FindListener<Photo>() {
+        BmobQuery<Person> query = new BmobQuery<Person>();
+        query.addWhereEqualTo("user", user);
+        query.findObjects(this, new FindListener<Person>() {
             @Override
-            public void onSuccess(List<Photo> list) {
-                for (Photo photo : list){
-                   photo.getImage().download(mActivity, new DownloadFileListener() {
+            public void onSuccess(List<Person> list) {
+                for (Person person : list){
+                   person.getAvatarFile().download(mActivity, new DownloadFileListener() {
                         @Override
                         public void onSuccess(String savePath) {
                             imageUri = BitmapUtil.getImageUri(savePath);
@@ -180,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initDrawerView(){
-        queryPhotoTable();
         getUserHead();
         toolbar = (Toolbar)findViewById(R.id.toolBar);
         toolbar.setTitle(R.string.yue);

@@ -24,4 +24,7 @@ public interface IUser {
     public List<String> selectUserObjId();
     public void insertUserPhotoByUserId(Object[] params);
 
+    public boolean addPersonUser(Object[] params);
+    public String selectPersonObjIdByUserObjId(String[] selectionArgs);
+
 }

@@ -26,6 +26,9 @@ public class UserDao implements IUser {
     private String selectUserObjId = "select userId from user";
     private String inserUserPhotoByUserId = "insert into user(image) values(?) where objId = ?";
 
+    private String insertPersonUser = "insert into user_person_id(personObjId, userObjId) values(?, ?)";
+    private String selectPeronUserTableByUserObjId = "select personObjId from user_person_id where userObjId = ?";
+
     private DBOpenHelper helper = null;
     public UserDao(Context context){
         helper = new DBOpenHelper(context);
@@ -82,6 +85,53 @@ public class UserDao implements IUser {
                 database.close();
             }
         }
+    }
+
+    @Override
+    public boolean addPersonUser(Object[] params) {
+        boolean flag = false;
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getWritableDatabase();
+            database.execSQL(insertPersonUser, params);
+            flag = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public String selectPersonObjIdByUserObjId(String[] selectionArgs) {
+        String personObjId = "";
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getReadableDatabase();
+            Cursor cursor = database.rawQuery(selectPeronUserTableByUserObjId, selectionArgs);
+            int colums = cursor.getColumnCount();
+            while (cursor.moveToNext()){
+                for (int i = 0; i < colums; i++){
+                    String cols_name = cursor.getColumnName(i);//提取列的名称
+                    if ("personObjId".equals(cols_name)){
+                        String cols_value = cursor.getString(cursor.getColumnIndex(cols_name));//根据列的名称提取列的值
+                        personObjId = cols_value;
+                    }
+                }
+            }
+            return personObjId;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+        return null;
     }
 
     @Override

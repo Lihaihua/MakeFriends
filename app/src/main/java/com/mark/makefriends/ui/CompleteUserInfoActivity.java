@@ -16,11 +16,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
-import com.mark.makefriends.bean.Photo;
+import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.ImageCompress;
 import com.mark.makefriends.support.PhotoUtil;
+import com.mark.makefriends.support.dao.IUser;
+import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
 import com.soundcloud.android.crop.Crop;
 
@@ -28,7 +31,6 @@ import java.io.File;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -225,29 +227,22 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
             public void onSuccess() {
                 //返回上传文件的完整地址
                 String url = bmobFile.getFileUrl(CompleteUserInfoActivity.this);
-                User user1 = new User();
-                user1.setAvatar(url);
-                updateUserData(user1, new UpdateListener() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onFailure(int i, String s) {
-
-                    }
-                });
 
                 dismissProgressDialog();
                 Toast.makeText(getApplicationContext(), "照片上传成功！", Toast.LENGTH_SHORT).show();
 
-                //添加用户和头像一对一关联
-                User user = MyApp.getCurrentUser();
-                Photo photo = new Photo();
-                photo.setImage(bmobFile);
-                photo.setOwner(user);
-                photo.save(mActivity, new SaveListener() {
+                //更新Bmob云端person表, 注：Bmob sdk修改数据只能通过objectId来修改，目前不提供查询条件方式的修改方法
+                //注册完成后会将personObjId和uerObjId保持在本地数据库，所以此处从本地数据库获取personObjId
+                IUser user = new UserDao(CompleteUserInfoActivity.this);
+                String userObjId = MyApp.getCurrentUser().getObjectId();
+                String[] seleStr = {userObjId};
+                String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
+
+                Person person = new Person();
+                person.setValue("nick", MyApp.getCurrentUser().getUsername());
+                person.setValue("avatar", url);
+                person.setAvatarFile(bmobFile);
+                person.update(getApplicationContext(), personObjId, new UpdateListener() {
                     @Override
                     public void onSuccess() {
 

@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
     <!-- 设备休眠 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -21,6 +23,14 @@
     <!--通知震动-->
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- 更改设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -29,9 +39,17 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBarAppTheme">
 
+        <!--Bmob Application ID-->
         <meta-data
             android:name="Bmob_APP_KEY"
             android:value="c7b3d285e74c0ca37950c20b10f8c85a"/>
+        <!--高德Key-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="dd7356fe48e767974efb610f57c9ecea"/>
+
+        <!--定位需要的服务-->
+        <service android:name="com.amap.api.location.APSService"/>
 
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
