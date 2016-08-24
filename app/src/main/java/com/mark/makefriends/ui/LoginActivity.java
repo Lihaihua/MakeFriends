@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
-import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.support.CircularImage;
@@ -70,7 +69,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private void updateUserCity(){
 
         IUser user = new UserDao(LoginActivity.this);
-        String userObjId = MyApp.getCurrentUser().getObjectId();
+        String userObjId = "";
+        if (MyApp.getCurrentUser() != null){
+            userObjId = MyApp.getCurrentUser().getObjectId();
+        }
+
         String[] seleStr = {userObjId};
         String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
 
