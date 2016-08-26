@@ -48,4 +48,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.clough.android.androiddbviewer:androiddbviewer:1.0.0'
     compile files('libs/AMap_Location_V2.8.0_20160811.jar')
+    compile 'com.facebook.fresco:fresco:0.13.0'
 }

@@ -10,6 +10,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.im.MessageHandler;
 import com.mark.makefriends.support.dao.IUser;
@@ -48,6 +49,9 @@ public class MyApplication extends Application{
 
         //初始化定位
         initLocation();
+
+        //初始化Fresco
+        Fresco.initialize(this);
 
         //查询Bmob云端 person表
         queryPersonTable();

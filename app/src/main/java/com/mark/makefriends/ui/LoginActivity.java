@@ -67,7 +67,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void updateUserCity(){
-
         IUser user = new UserDao(LoginActivity.this);
         String userObjId = "";
         if (MyApp.getCurrentUser() != null){

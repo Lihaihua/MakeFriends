@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         QueryUserTable();
     }
 
-    private void getAllUser(){
+    private void getAllPerson(){
         BmobQuery<User> query = new BmobQuery<User>();
         query.findObjects(this, new FindListener<User>() {
             @Override
