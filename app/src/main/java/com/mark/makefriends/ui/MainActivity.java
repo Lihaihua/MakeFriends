@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Activity mActivity;
     private Uri imageUri;
 
-    private List<Person> userList;
+    private List<User> userList;
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -73,29 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initSwipeView();
 
         QueryUserTable();
-        getAllPersonFromBmob();
     }
 
-    private void getAllPersonFromBmob(){
-        BmobQuery<Person> query = new BmobQuery<Person>();
-        query.findObjects(this, new FindListener<Person>() {
+    private void getAllPerson(){
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.findObjects(this, new FindListener<User>() {
             @Override
-            public void onSuccess(List<Person> list) {
-                IUser iUser = new UserDao(MainActivity.this);
-                for (Person person : list) {
-                    String personId = person.getObjectId();
-                    String nick = person.getNick();
-                    String location = person.getLocation();
-                    Integer gender = person.getGender();
-                    String avatar = person.getAvatar();
-                    Integer age = person.getAge();
-
-                    Object[] params = {personId, nick, location, gender, avatar, age};
-                    iUser.addPerson(params);
-                }
-
-                getAllPersonInfoFromDB();
-
+            public void onSuccess(List<User> list) {
+                userList = list;
             }
 
             @Override
@@ -105,10 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private List<Person> getAllPersonInfoFromDB(){
-        IUser iUser = new UserDao(MainActivity.this);
-        return iUser.selectAllPerson();
-    }
 
     /**
      * 获得指定id的用户头像
