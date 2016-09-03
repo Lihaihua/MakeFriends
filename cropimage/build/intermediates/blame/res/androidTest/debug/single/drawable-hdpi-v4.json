@@ -16,6 +16,10 @@
         "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__divider.9.png"
     },
     {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__divider.9.png",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__divider.9.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_cancel.png",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_cancel.png"
     },
@@ -24,15 +28,23 @@
         "source": "E:\\CropImage\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_done.png"
     },
     {
-        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_done.png",
-        "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_done.png"
-    },
-    {
         "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__divider.9.png",
         "source": "E:\\CropImage\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__divider.9.png"
     },
     {
+        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_done.png",
+        "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_done.png"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_cancel.png",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_cancel.png"
+    },
+    {
         "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_cancel.png",
         "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_cancel.png"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\crop__ic_done.png",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\crop__ic_done.png"
     }
 ]

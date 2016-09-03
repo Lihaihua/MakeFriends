@@ -4,6 +4,10 @@
         "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\layout\\crop__layout_done_cancel.xml"
     },
     {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\crop__layout_done_cancel.xml",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
         "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\crop__activity_crop.xml",
         "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\layout\\crop__activity_crop.xml"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\crop__layout_done_cancel.xml",
         "source": "E:\\CropImage\\lib\\build\\intermediates\\bundles\\debug\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\crop__activity_crop.xml",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\layout\\crop__activity_crop.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\crop__layout_done_cancel.xml",

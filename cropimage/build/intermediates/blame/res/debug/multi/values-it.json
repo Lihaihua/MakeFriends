@@ -100,6 +100,106 @@
         ]
     },
     {
+        "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 72,
+                    "endOffset": 168
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 305,
+                        "endColumn": 74,
+                        "endOffset": 375
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 173,
+                    "endColumn": 46,
+                    "endOffset": 215
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 258,
+                        "endColumn": 46,
+                        "endOffset": 300
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 220,
+                    "endColumn": 73,
+                    "endOffset": 289
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 183,
+                        "endColumn": 73,
+                        "endOffset": 252
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 294,
+                    "endColumn": 62,
+                    "endOffset": 352
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 64,
+                        "endColumn": 62,
+                        "endOffset": 122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 357,
+                    "endColumn": 55,
+                    "endOffset": 408
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 127,
+                        "endColumn": 55,
+                        "endOffset": 178
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
         "map": [
             {
@@ -200,7 +300,7 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
+        "outputFile": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
         "map": [
             {
                 "to": {
@@ -211,13 +311,13 @@
                     "endOffset": 168
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 305,
+                        "startOffset": 312,
                         "endColumn": 74,
-                        "endOffset": 375
+                        "endOffset": 382
                     }
                 }
             },
@@ -230,13 +330,13 @@
                     "endOffset": 215
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 258,
+                        "startOffset": 264,
                         "endColumn": 46,
-                        "endOffset": 300
+                        "endOffset": 306
                     }
                 }
             },
@@ -249,13 +349,13 @@
                     "endOffset": 289
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 183,
+                        "startOffset": 187,
                         "endColumn": 73,
-                        "endOffset": 252
+                        "endOffset": 256
                     }
                 }
             },
@@ -268,13 +368,13 @@
                     "endOffset": 352
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 64,
+                        "startOffset": 66,
                         "endColumn": 62,
-                        "endOffset": 122
+                        "endOffset": 124
                     }
                 }
             },
@@ -287,13 +387,13 @@
                     "endOffset": 408
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 127,
+                        "startOffset": 130,
                         "endColumn": 55,
-                        "endOffset": 178
+                        "endOffset": 181
                     }
                 }
             }

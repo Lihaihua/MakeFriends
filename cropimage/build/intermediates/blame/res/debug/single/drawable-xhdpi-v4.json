@@ -12,6 +12,14 @@
         "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable-xhdpi\\crop__divider.9.png"
     },
     {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__divider.9.png",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__divider.9.png"
+    },
+    {
         "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
         "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
     },
@@ -24,6 +32,22 @@
         "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable-xhdpi\\crop__tile.png"
     },
     {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_done.png",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__ic_done.png"
+    },
+    {
+        "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
+        "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__tile.png",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__tile.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__divider.9.png",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable-xhdpi\\crop__divider.9.png"
     },
@@ -32,19 +56,11 @@
         "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable-xhdpi\\crop__tile.png"
     },
     {
-        "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
-        "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_done.png",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_done.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__tile.png",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable-xhdpi\\crop__tile.png"
-    },
-    {
-        "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
     }
 ]

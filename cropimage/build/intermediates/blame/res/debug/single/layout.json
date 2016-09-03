@@ -16,6 +16,14 @@
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\layout\\crop__layout_done_cancel.xml"
     },
     {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\layout\\crop__layout_done_cancel.xml",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\layout\\crop__activity_crop.xml",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\layout\\crop__activity_crop.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\layout\\crop__activity_crop.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\layout\\crop__activity_crop.xml"
     },

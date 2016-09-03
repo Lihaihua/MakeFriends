@@ -73,14 +73,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initSwipeView();
 
         QueryUserTable();
+
+        getAllPersonFromBmob();
     }
 
-    private void getAllPerson(){
-        BmobQuery<User> query = new BmobQuery<User>();
-        query.findObjects(this, new FindListener<User>() {
+    private void getAllPersonFromBmob(){
+        BmobQuery<Person> query = new BmobQuery<Person>();
+        query.findObjects(this, new FindListener<Person>() {
             @Override
-            public void onSuccess(List<User> list) {
-                userList = list;
+            public void onSuccess(List<Person> list) {
+                IUser iUser = new UserDao(MainActivity.this);
+                for (Person person : list) {
+                    String personId = person.getObjectId();
+                    String nick = person.getNick();
+                    String location = person.getLocation();
+                    Integer gender = person.getGender();
+                    String avatar = person.getAvatar();
+                    Integer age = person.getAge();
+
+                    Object[] params = {personId, nick, location, gender, avatar, age};
+                    iUser.addPerson(params);
+                }
+
+                getAllPersonInfoFromDB();
+
             }
 
             @Override
@@ -88,6 +104,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+    }
+
+    private List<Person> getAllPersonInfoFromDB(){
+        IUser iUser = new UserDao(MainActivity.this);
+        return iUser.selectAllPerson();
     }
 
 
