@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.mark.makefriends.bean.Person;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,9 @@ public class UserDao implements IUser {
 
     private String insertPersonUser = "insert into user_person_id(personObjId, userObjId) values(?, ?)";
     private String selectPeronUserTableByUserObjId = "select personObjId from user_person_id where userObjId = ?";
+
+    private String replacePerson = "replace into person(personId, nick, location, gender, avatar, age) values(?, ?, ?, ?, ?, ?)";
+    private String selectAllPerson = "select * from person";
 
     private DBOpenHelper helper = null;
     public UserDao(Context context){
@@ -106,6 +111,24 @@ public class UserDao implements IUser {
     }
 
     @Override
+    public boolean addPerson(Object[] params){
+        boolean flag = false;
+        SQLiteDatabase database = null;
+        try {
+            database = helper.getWritableDatabase();
+            database.execSQL(replacePerson, params);
+            flag = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(database != null){
+                database.close();
+            }
+        }
+        return flag;
+    }
+
+    @Override
     public String selectPersonObjIdByUserObjId(String[] selectionArgs) {
         String personObjId = "";
         SQLiteDatabase database = null;
@@ -173,6 +196,38 @@ public class UserDao implements IUser {
             }
         }
         return flag;
+    }
+
+    @Override public List<Person> selectAllPerson(){
+        List<Person> personList = new ArrayList<Person>();
+        SQLiteDatabase database = null;
+        try{
+            database = helper.getReadableDatabase();
+            Cursor cursor = database.rawQuery(selectAllPerson, null);
+            while (cursor.moveToNext()){
+                String name = cursor.getString(2);
+                String location = cursor.getString(3);
+                Integer gender = cursor.getInt(4);
+                String avatar = cursor.getString(5);
+                Integer age = cursor.getInt(6);
+
+                Person person = new Person();
+                person.setNick(name);
+                person.setLocation(location);
+                person.setGender(gender);
+                person.setAvatar(avatar);
+                person.setAge(age);
+                personList.add(person);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                database.close();
+            }
+        }
+        return null;
     }
 
     //根据Id号来查询，查询的每一行数据返回用 Map 集合来存储

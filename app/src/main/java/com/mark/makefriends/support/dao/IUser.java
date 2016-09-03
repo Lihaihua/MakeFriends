@@ -2,6 +2,8 @@ package com.mark.makefriends.support.dao;
 
 import android.graphics.Bitmap;
 
+import com.mark.makefriends.bean.Person;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -26,5 +28,8 @@ public interface IUser {
 
     public boolean addPersonUser(Object[] params);
     public String selectPersonObjIdByUserObjId(String[] selectionArgs);
+
+    public boolean addPerson(Object[] params);
+    public List<Person>  selectAllPerson();
 
 }
