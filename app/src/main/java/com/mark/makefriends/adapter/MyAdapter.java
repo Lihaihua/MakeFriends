@@ -1,6 +1,7 @@
 package com.mark.makefriends.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,8 @@ public class MyAdapter extends BaseAdapter {
             holder = (ViewHolder)view.getTag();
         }
 
-        holder.user_img.setBackgroundResource((Integer)mData.get(i).get("img"));
+        //holder.user_img.setImageURI(mData.get(i).get("img"));
+        //holder.user_img.setBackgroundResource((Integer)mData.get(i).get("img"));
         holder.user_info.setText((String)mData.get(i).get("info"));
 
         return view;

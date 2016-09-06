@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     iUser.addPerson(params);
                 }
 
-                getAllPersonInfoFromDB();
+                //getAllPersonInfoFromDB();
 
             }
 
@@ -242,22 +242,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private List<Map<String, Object>> getData() {
-
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
+        final List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        final Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("img", R.drawable.ic_launcher);
-        map.put("info", "跆拳道");
-        list.add(map);
 
-        map.put("img", R.drawable.ic_launcher);
-        map.put("info", "跆拳道1");
-        list.add(map);
+        List<Person> list_person = getAllPersonInfoFromDB();
+        for (Person person : list_person){
+            String img_url = person.getAvatar();
+            String nick = person.getNick();
 
-        map.put("img", R.drawable.ic_launcher);
-        map.put("info", "跆拳道2");
-        list.add(map);
+            if (person.getAvatarFile() != null){
+                person.getAvatarFile().download(this, new DownloadFileListener() {
+                    @Override
+                    public void onSuccess(String savePath) {
+                        imageUri = BitmapUtil.getImageUri(savePath);
+                        map.put("img", imageUri);
+                        list.add(map);
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+
+                    }
+                });
+            }
+
+        }
+
+
+
+
+//        map.put("img", R.drawable.ic_launcher);
+//        map.put("info", "跆拳道");
+//        list.add(map);
+//
+//        map.put("img", R.drawable.ic_launcher);
+//        map.put("info", "跆拳道1");
+//        list.add(map);
+//
+//        map.put("img", R.drawable.ic_launcher);
+//        map.put("info", "跆拳道2");
+//        list.add(map);
 
         return list;
     }
