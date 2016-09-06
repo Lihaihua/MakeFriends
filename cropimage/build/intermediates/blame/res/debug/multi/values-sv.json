@@ -1,5 +1,105 @@
 [
     {
+        "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-sv\\values-sv.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 71,
+                    "endOffset": 167
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 291,
+                        "endColumn": 73,
+                        "endOffset": 360
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 172,
+                    "endColumn": 43,
+                    "endOffset": 211
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 247,
+                        "endColumn": 43,
+                        "endOffset": 286
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 216,
+                    "endColumn": 73,
+                    "endOffset": 285
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 172,
+                        "endColumn": 73,
+                        "endOffset": 241
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 290,
+                    "endColumn": 53,
+                    "endOffset": 339
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 64,
+                        "endColumn": 53,
+                        "endOffset": 113
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 344,
+                    "endColumn": 53,
+                    "endOffset": 393
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 118,
+                        "endColumn": 53,
+                        "endOffset": 167
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\values-sv\\values-sv.xml",
         "map": [
             {
@@ -100,7 +200,7 @@
         ]
     },
     {
-        "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-sv\\values-sv.xml",
+        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-sv\\values-sv.xml",
         "map": [
             {
                 "to": {
@@ -111,7 +211,7 @@
                     "endOffset": 167
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -130,7 +230,7 @@
                     "endOffset": 211
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -149,7 +249,7 @@
                     "endOffset": 285
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -168,7 +268,7 @@
                     "endOffset": 339
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -187,7 +287,7 @@
                     "endOffset": 393
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-sv\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -294,106 +394,6 @@
                         "startOffset": 121,
                         "endColumn": 53,
                         "endOffset": 170
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-sv\\values-sv.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 100,
-                    "endColumn": 71,
-                    "endOffset": 167
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 291,
-                        "endColumn": 73,
-                        "endOffset": 360
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 172,
-                    "endColumn": 43,
-                    "endOffset": 211
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 247,
-                        "endColumn": 43,
-                        "endOffset": 286
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 216,
-                    "endColumn": 73,
-                    "endOffset": 285
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 172,
-                        "endColumn": 73,
-                        "endOffset": 241
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 290,
-                    "endColumn": 53,
-                    "endOffset": 339
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 64,
-                        "endColumn": 53,
-                        "endOffset": 113
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 344,
-                    "endColumn": 53,
-                    "endOffset": 393
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-sv\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 118,
-                        "endColumn": 53,
-                        "endOffset": 167
                     }
                 }
             }

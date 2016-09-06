@@ -1,18 +1,18 @@
 [
     {
-        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
-        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
-    },
-    {
         "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
         "source": "E:\\CropImage\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
     },
     {
-        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
-        "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
+        "source": "G:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
+    },
+    {
+        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\crop__selectable_background.xml",
+        "source": "E:\\MakeFriends\\cropimage\\build\\intermediates\\bundles\\debug\\res\\drawable-v21\\crop__selectable_background.xml"
     }
 ]

@@ -1,105 +1,5 @@
 [
     {
-        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 100,
-                    "endColumn": 72,
-                    "endOffset": 168
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 305,
-                        "endColumn": 74,
-                        "endOffset": 375
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 173,
-                    "endColumn": 46,
-                    "endOffset": 215
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 258,
-                        "endColumn": 46,
-                        "endOffset": 300
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 220,
-                    "endColumn": 73,
-                    "endOffset": 289
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 183,
-                        "endColumn": 73,
-                        "endOffset": 252
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 294,
-                    "endColumn": 62,
-                    "endOffset": 352
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 64,
-                        "endColumn": 62,
-                        "endOffset": 122
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 357,
-                    "endColumn": 55,
-                    "endOffset": 408
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 127,
-                        "endColumn": 55,
-                        "endOffset": 178
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
         "map": [
             {
@@ -200,7 +100,7 @@
         ]
     },
     {
-        "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
+        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
         "map": [
             {
                 "to": {
@@ -211,7 +111,7 @@
                     "endOffset": 168
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -230,7 +130,7 @@
                     "endOffset": 215
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -249,7 +149,7 @@
                     "endOffset": 289
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -268,7 +168,7 @@
                     "endOffset": 352
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -287,7 +187,7 @@
                     "endOffset": 408
                 },
                 "from": {
-                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-it\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -394,6 +294,106 @@
                         "startOffset": 130,
                         "endColumn": 55,
                         "endOffset": 181
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-it\\values-it.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 72,
+                    "endOffset": 168
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 305,
+                        "endColumn": 74,
+                        "endOffset": 375
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 173,
+                    "endColumn": 46,
+                    "endOffset": 215
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 258,
+                        "endColumn": 46,
+                        "endOffset": 300
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 220,
+                    "endColumn": 73,
+                    "endOffset": 289
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 183,
+                        "endColumn": 73,
+                        "endOffset": 252
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 294,
+                    "endColumn": 62,
+                    "endOffset": 352
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 64,
+                        "endColumn": 62,
+                        "endOffset": 122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 357,
+                    "endColumn": 55,
+                    "endOffset": 408
+                },
+                "from": {
+                    "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-it\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 127,
+                        "endColumn": 55,
+                        "endOffset": 178
                     }
                 }
             }

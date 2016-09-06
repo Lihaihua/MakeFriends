@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\release\\values-in\\values-in.xml",
+        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\values-in\\values-in.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 166
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 296
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 355
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 410
                 },
                 "from": {
-                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -300,7 +300,7 @@
         ]
     },
     {
-        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\values-in\\values-in.xml",
+        "outputFile": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\release\\values-in\\values-in.xml",
         "map": [
             {
                 "to": {
@@ -311,7 +311,7 @@
                     "endOffset": 166
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -330,7 +330,7 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -349,7 +349,7 @@
                     "endOffset": 296
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -368,7 +368,7 @@
                     "endOffset": 355
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -387,7 +387,7 @@
                     "endOffset": 410
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-in\\strings.xml",
+                    "file": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\values-in\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

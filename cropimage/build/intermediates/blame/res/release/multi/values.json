@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 148
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\attrs.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\attrs.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 19,
+                        "startOffset": 17,
                         "endColumn": 53,
-                        "endOffset": 68
+                        "endOffset": 66
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 199
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 19,
+                        "startOffset": 17,
                         "endColumn": 50,
-                        "endOffset": 65
+                        "endOffset": 63
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 251
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 71,
+                        "startOffset": 68,
                         "endColumn": 51,
-                        "endOffset": 118
+                        "endOffset": 115
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 310
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 184,
+                        "startOffset": 179,
                         "endColumn": 58,
-                        "endOffset": 238
+                        "endOffset": 233
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 369
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 124,
+                        "startOffset": 120,
                         "endColumn": 58,
-                        "endOffset": 178
+                        "endOffset": 174
                     }
                 }
             },
@@ -106,13 +106,13 @@
                     "endOffset": 746
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\dimens.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 19,
+                        "startOffset": 17,
                         "endColumn": 47,
-                        "endOffset": 62
+                        "endOffset": 60
                     }
                 }
             },
@@ -125,13 +125,13 @@
                     "endOffset": 818
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 297,
+                        "startOffset": 290,
                         "endColumn": 73,
-                        "endOffset": 366
+                        "endOffset": 359
                     }
                 }
             },
@@ -144,13 +144,13 @@
                     "endOffset": 862
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 252,
+                        "startOffset": 246,
                         "endColumn": 43,
-                        "endOffset": 291
+                        "endOffset": 285
                     }
                 }
             },
@@ -163,13 +163,13 @@
                     "endOffset": 934
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 177,
+                        "startOffset": 173,
                         "endColumn": 71,
-                        "endOffset": 244
+                        "endOffset": 240
                     }
                 }
             },
@@ -182,13 +182,13 @@
                     "endOffset": 991
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 66,
+                        "startOffset": 64,
                         "endColumn": 56,
-                        "endOffset": 118
+                        "endOffset": 116
                     }
                 }
             },
@@ -201,13 +201,13 @@
                     "endOffset": 1043
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 124,
+                        "startOffset": 121,
                         "endColumn": 51,
-                        "endOffset": 171
+                        "endOffset": 168
                     }
                 }
             },
@@ -220,13 +220,13 @@
                     "endOffset": 1068
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 66,
+                        "startOffset": 64,
                         "endColumn": 31,
-                        "endOffset": 93
+                        "endOffset": 91
                     }
                 }
             },
@@ -240,14 +240,14 @@
                     "endOffset": 1371
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 653,
+                        "startOffset": 639,
                         "endLine": 19,
                         "endColumn": 12,
-                        "endOffset": 956
+                        "endOffset": 937
                     }
                 }
             },
@@ -261,14 +261,14 @@
                     "endOffset": 1981
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 964,
+                        "startOffset": 943,
                         "endLine": 31,
                         "endColumn": 12,
-                        "endOffset": 1579
+                        "endOffset": 1548
                     }
                 }
             },
@@ -282,14 +282,14 @@
                     "endOffset": 2179
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 1785,
+                        "startOffset": 1747,
                         "endLine": 41,
                         "endColumn": 12,
-                        "endOffset": 1981
+                        "endOffset": 1940
                     }
                 }
             },
@@ -303,14 +303,14 @@
                     "endOffset": 2371
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 33,
                         "startColumn": 4,
-                        "startOffset": 1587,
+                        "startOffset": 1554,
                         "endLine": 36,
                         "endColumn": 12,
-                        "endOffset": 1777
+                        "endOffset": 1741
                     }
                 }
             },
@@ -324,14 +324,14 @@
                     "endOffset": 2908
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 101,
+                        "startOffset": 97,
                         "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 645
+                        "endOffset": 633
                     }
                 }
             }
@@ -1014,7 +1014,7 @@
         ]
     },
     {
-        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "outputFile": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -1025,13 +1025,13 @@
                     "endOffset": 148
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\attrs.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\attrs.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 17,
+                        "startOffset": 19,
                         "endColumn": 53,
-                        "endOffset": 66
+                        "endOffset": 68
                     }
                 }
             },
@@ -1044,13 +1044,13 @@
                     "endOffset": 199
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 17,
+                        "startOffset": 19,
                         "endColumn": 50,
-                        "endOffset": 63
+                        "endOffset": 65
                     }
                 }
             },
@@ -1063,13 +1063,13 @@
                     "endOffset": 251
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 68,
+                        "startOffset": 71,
                         "endColumn": 51,
-                        "endOffset": 115
+                        "endOffset": 118
                     }
                 }
             },
@@ -1082,13 +1082,13 @@
                     "endOffset": 310
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 179,
+                        "startOffset": 184,
                         "endColumn": 58,
-                        "endOffset": 233
+                        "endOffset": 238
                     }
                 }
             },
@@ -1101,13 +1101,13 @@
                     "endOffset": 369
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\colors.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 120,
+                        "startOffset": 124,
                         "endColumn": 58,
-                        "endOffset": 174
+                        "endOffset": 178
                     }
                 }
             },
@@ -1120,13 +1120,13 @@
                     "endOffset": 746
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\dimens.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 17,
+                        "startOffset": 19,
                         "endColumn": 47,
-                        "endOffset": 60
+                        "endOffset": 62
                     }
                 }
             },
@@ -1139,13 +1139,13 @@
                     "endOffset": 818
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 290,
+                        "startOffset": 297,
                         "endColumn": 73,
-                        "endOffset": 359
+                        "endOffset": 366
                     }
                 }
             },
@@ -1158,13 +1158,13 @@
                     "endOffset": 862
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 246,
+                        "startOffset": 252,
                         "endColumn": 43,
-                        "endOffset": 285
+                        "endOffset": 291
                     }
                 }
             },
@@ -1177,13 +1177,13 @@
                     "endOffset": 934
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 173,
+                        "startOffset": 177,
                         "endColumn": 71,
-                        "endOffset": 240
+                        "endOffset": 244
                     }
                 }
             },
@@ -1196,13 +1196,13 @@
                     "endOffset": 991
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 64,
+                        "startOffset": 66,
                         "endColumn": 56,
-                        "endOffset": 116
+                        "endOffset": 118
                     }
                 }
             },
@@ -1215,13 +1215,13 @@
                     "endOffset": 1043
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\strings.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 121,
+                        "startOffset": 124,
                         "endColumn": 51,
-                        "endOffset": 168
+                        "endOffset": 171
                     }
                 }
             },
@@ -1234,13 +1234,13 @@
                     "endOffset": 1068
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 64,
+                        "startOffset": 66,
                         "endColumn": 31,
-                        "endOffset": 91
+                        "endOffset": 93
                     }
                 }
             },
@@ -1254,14 +1254,14 @@
                     "endOffset": 1371
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 639,
+                        "startOffset": 653,
                         "endLine": 19,
                         "endColumn": 12,
-                        "endOffset": 937
+                        "endOffset": 956
                     }
                 }
             },
@@ -1275,14 +1275,14 @@
                     "endOffset": 1981
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 943,
+                        "startOffset": 964,
                         "endLine": 31,
                         "endColumn": 12,
-                        "endOffset": 1548
+                        "endOffset": 1579
                     }
                 }
             },
@@ -1296,14 +1296,14 @@
                     "endOffset": 2179
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 1747,
+                        "startOffset": 1785,
                         "endLine": 41,
                         "endColumn": 12,
-                        "endOffset": 1940
+                        "endOffset": 1981
                     }
                 }
             },
@@ -1317,14 +1317,14 @@
                     "endOffset": 2371
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 33,
                         "startColumn": 4,
-                        "startOffset": 1554,
+                        "startOffset": 1587,
                         "endLine": 36,
                         "endColumn": 12,
-                        "endOffset": 1741
+                        "endOffset": 1777
                     }
                 }
             },
@@ -1338,14 +1338,14 @@
                     "endOffset": 2908
                 },
                 "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values\\styles.xml",
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 97,
+                        "startOffset": 101,
                         "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 633
+                        "endOffset": 645
                     }
                 }
             }

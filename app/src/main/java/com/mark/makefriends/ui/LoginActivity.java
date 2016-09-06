@@ -2,6 +2,7 @@ package com.mark.makefriends.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +13,20 @@ import android.widget.Toast;
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Person;
+import com.mark.makefriends.bean.User;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
+import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.MyApp;
 
+import java.util.List;
 import java.util.Map;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.DownloadFileListener;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -35,6 +42,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private TextView findPassword;
     private Activity mActivity;
     public static CircularImage cover_user_photo;
+    private Uri imageUri;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

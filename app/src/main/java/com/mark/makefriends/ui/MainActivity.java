@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 获得指定id的用户头像
      */
-    public void getUserHead(){
+    private void getUserHead(){
         final User user = MyApp.getCurrentUser();
         BmobQuery<Person> query = new BmobQuery<Person>();
         query.addWhereEqualTo("user", user);
@@ -123,12 +123,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onSuccess(List<Person> list) {
                 for (Person person : list){
+                    if (person.getAvatarFile() == null){
+                        return;
+                    }
                    person.getAvatarFile().download(mActivity, new DownloadFileListener() {
                         @Override
                         public void onSuccess(String savePath) {
                             imageUri = BitmapUtil.getImageUri(savePath);
                             if (imageUri == null){
-                                userHead.setImageResource(R.drawable.logo);
+                                userHead.setImageResource(R.drawable.nohead);
                             }else {
                                 userHead.setImageURI(imageUri);
                             }
@@ -159,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         actionBarDrawerToggle.syncState();
 
         userHead = (CircularImage)findViewById(R.id.user_head);
-        userHead.setImageResource(R.drawable.logo);
+        userHead.setImageResource(R.drawable.nohead);
 
         nickName = (TextView)findViewById(R.id.nick_name);
         edit = (TextView)findViewById(R.id.edit);

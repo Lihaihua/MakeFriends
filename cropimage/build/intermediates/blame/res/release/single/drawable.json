@@ -1,34 +1,34 @@
 [
     {
+        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
+        "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__selectable_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable\\crop__selectable_background.xml"
+    },
+    {
         "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
         "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable\\crop__texture.xml"
-    },
-    {
-        "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
-        "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable\\crop__selectable_background.xml"
-    },
-    {
-        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
-        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__texture.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable\\crop__texture.xml"
     },
     {
-        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
-        "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__selectable_background.xml"
-    },
-    {
-        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
-        "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__texture.xml"
-    },
-    {
         "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
         "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__selectable_background.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\android-crop-master\\lib\\src\\main\\res\\drawable\\crop__selectable_background.xml"
+        "merged": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
+        "source": "G:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__texture.xml"
+    },
+    {
+        "merged": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\release\\drawable\\crop__selectable_background.xml",
+        "source": "E:\\CropImage\\lib\\src\\main\\res\\drawable\\crop__selectable_background.xml"
+    },
+    {
+        "merged": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\release\\drawable\\crop__texture.xml",
+        "source": "E:\\MakeFriends\\cropimage\\src\\main\\res\\drawable\\crop__texture.xml"
     }
 ]

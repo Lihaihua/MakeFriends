@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-zh-rTW\\values-zh-rTW.xml",
+        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-zh-rTW\\values-zh-rTW.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 163
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 262,
+                        "startOffset": 255,
                         "endColumn": 69,
-                        "endOffset": 327
+                        "endOffset": 320
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 205
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 219,
+                        "startOffset": 213,
                         "endColumn": 41,
-                        "endOffset": 256
+                        "endOffset": 250
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 260
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 161,
+                        "startOffset": 157,
                         "endColumn": 54,
-                        "endOffset": 211
+                        "endOffset": 207
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 309
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 66,
+                        "startOffset": 64,
                         "endColumn": 48,
-                        "endOffset": 110
+                        "endOffset": 108
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 353
                 },
                 "from": {
-                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 116,
+                        "startOffset": 113,
                         "endColumn": 43,
-                        "endOffset": 155
+                        "endOffset": 152
                     }
                 }
             }
@@ -200,6 +200,106 @@
         ]
     },
     {
+        "outputFile": "G:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-zh-rTW\\values-zh-rTW.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 67,
+                    "endOffset": 163
+                },
+                "from": {
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 262,
+                        "endColumn": 69,
+                        "endOffset": 327
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 168,
+                    "endColumn": 41,
+                    "endOffset": 205
+                },
+                "from": {
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 219,
+                        "endColumn": 41,
+                        "endOffset": 256
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 210,
+                    "endColumn": 54,
+                    "endOffset": 260
+                },
+                "from": {
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 161,
+                        "endColumn": 54,
+                        "endOffset": 211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 265,
+                    "endColumn": 48,
+                    "endOffset": 309
+                },
+                "from": {
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 66,
+                        "endColumn": 48,
+                        "endOffset": 110
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 314,
+                    "endColumn": 43,
+                    "endOffset": 353
+                },
+                "from": {
+                    "file": "G:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 116,
+                        "endColumn": 43,
+                        "endOffset": 155
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "E:\\MakeFriends\\cropimage\\build\\intermediates\\res\\merged\\debug\\values-zh-rTW\\values-zh-rTW.xml",
         "map": [
             {
@@ -288,106 +388,6 @@
                 },
                 "from": {
                     "file": "E:\\MakeFriends\\cropimage\\src\\main\\res\\values-zh-rTW\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 113,
-                        "endColumn": 43,
-                        "endOffset": 152
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "E:\\CropImage\\lib\\build\\intermediates\\res\\merged\\debug\\values-zh-rTW\\values-zh-rTW.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 100,
-                    "endColumn": 67,
-                    "endOffset": 163
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 255,
-                        "endColumn": 69,
-                        "endOffset": 320
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 168,
-                    "endColumn": 41,
-                    "endOffset": 205
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 213,
-                        "endColumn": 41,
-                        "endOffset": 250
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 210,
-                    "endColumn": 54,
-                    "endOffset": 260
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 157,
-                        "endColumn": 54,
-                        "endOffset": 207
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 265,
-                    "endColumn": 48,
-                    "endOffset": 309
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 64,
-                        "endColumn": 48,
-                        "endOffset": 108
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 314,
-                    "endColumn": 43,
-                    "endOffset": 353
-                },
-                "from": {
-                    "file": "E:\\CropImage\\lib\\src\\main\\res\\values-zh-rTW\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
