@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
@@ -71,39 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initDrawerView();
         initSwipeView();
-
-        QueryUserTable();
-
-        getAllPersonFromBmob();
-    }
-
-    private void getAllPersonFromBmob(){
-        BmobQuery<Person> query = new BmobQuery<Person>();
-        query.findObjects(this, new FindListener<Person>() {
-            @Override
-            public void onSuccess(List<Person> list) {
-                IUser iUser = new UserDao(MainActivity.this);
-                for (Person person : list) {
-                    String personId = person.getObjectId();
-                    String nick = person.getNick();
-                    String location = person.getLocation();
-                    Integer gender = person.getGender();
-                    String avatar = person.getAvatar();
-                    Integer age = person.getAge();
-
-                    Object[] params = {personId, nick, location, gender, avatar, age};
-                    iUser.addPerson(params);
-                }
-
-                //getAllPersonInfoFromDB();
-
-            }
-
-            @Override
-            public void onError(int i, String s) {
-
-            }
-        });
     }
 
     private List<Person> getAllPersonInfoFromDB(){
@@ -189,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rightBtn.setOnClickListener(this);
         centerBtn.setOnClickListener(this);
 
-        mData = getData();
+        mData = getAllData();
 
         final MyAdapter myAdapter = new MyAdapter(this, mData);
         flingContainer.setAdapter(myAdapter);
@@ -213,10 +181,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("img", R.drawable.ic_launcher);
-                map.put("info", "eeeeeee " + i);
-                mData.add(map);
+
                 i++;
             }
 
@@ -241,49 +206,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(ctx, s, Toast.LENGTH_SHORT).show();
     }
 
-    private List<Map<String, Object>> getData() {
+    private List<Map<String, Object>> getAllData() {
         final List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        final Map<String, Object> map;
-
-        map = new HashMap<String, Object>();
 
         List<Person> list_person = getAllPersonInfoFromDB();
         for (Person person : list_person){
-            String img_url = person.getAvatar();
             String nick = person.getNick();
+            String img_url = person.getAvatar();
+            Uri uri = Uri.parse(img_url);
 
-            if (person.getAvatarFile() != null){
-                person.getAvatarFile().download(this, new DownloadFileListener() {
-                    @Override
-                    public void onSuccess(String savePath) {
-                        imageUri = BitmapUtil.getImageUri(savePath);
-                        map.put("img", imageUri);
-                        list.add(map);
-                    }
-
-                    @Override
-                    public void onFailure(int i, String s) {
-
-                    }
-                });
-            }
-
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("img", uri);
+            map.put("info", nick);
+            list.add(map);
         }
-
-
-
-
-//        map.put("img", R.drawable.ic_launcher);
-//        map.put("info", "跆拳道");
-//        list.add(map);
-//
-//        map.put("img", R.drawable.ic_launcher);
-//        map.put("info", "跆拳道1");
-//        list.add(map);
-//
-//        map.put("img", R.drawable.ic_launcher);
-//        map.put("info", "跆拳道2");
-//        list.add(map);
 
         return list;
     }
@@ -294,34 +230,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void left(){
         flingContainer.getTopCardListener().selectLeft();
-    }
-
-    private void QueryUserTable(){
-        BmobQuery<User> query = new BmobQuery<User>();
-        //query.setLimit(100);
-        query.findObjects(mActivity, new FindListener<User>(){
-
-            @Override
-            public void onSuccess(List<User> list) {
-                IUser userDao = new UserDao(MainActivity.this);
-                for (User user : list){
-                    String userId = user.getObjectId();
-                    String userName = user.getUsername();
-                    //int sex = user.getGender();
-                    //int age = user.getAge();
-                    //Object[] params = {objId, userName, sex, age};
-                    Object[] params = {userId, userName};
-                    userDao.addUser(params);
-                }
-                return;
-            }
-
-            @Override
-            public void onError(int i, String s) {
-                Toast.makeText(mActivity,s,Toast.LENGTH_SHORT).show();
-                return;
-            }
-        });
     }
 
     @Override

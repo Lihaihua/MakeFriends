@@ -5,7 +5,7 @@
 
     <com.mark.mylibrary.SwipeFlingAdapterView
         android:id="@+id/frame1"
-        android:background="#ffeee9e2"
+        android:background="@color/alpha"
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_marginTop="20dp"

@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.makefriends.R;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class MyAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder{
-        public ImageView user_img;
+        public SimpleDraweeView user_img;
         public TextView user_info;
     }
 
@@ -54,15 +55,14 @@ public class MyAdapter extends BaseAdapter {
             holder = new ViewHolder();
 
             view = mInflater.inflate(R.layout.item, viewGroup, false);
-            holder.user_img = (ImageView)view.findViewById(R.id.user_img);
+            holder.user_img = (SimpleDraweeView)view.findViewById(R.id.user_img);
             holder.user_info = (TextView)view.findViewById(R.id.user_info);
             view.setTag(holder);
         }else {
             holder = (ViewHolder)view.getTag();
         }
 
-        //holder.user_img.setImageURI(mData.get(i).get("img"));
-        //holder.user_img.setBackgroundResource((Integer)mData.get(i).get("img"));
+        holder.user_img.setImageURI((Uri)mData.get(i).get("img"));
         holder.user_info.setText((String)mData.get(i).get("info"));
 
         return view;

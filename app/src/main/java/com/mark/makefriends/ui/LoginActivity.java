@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -106,6 +107,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         //更新用户地理位置
         updateUserCity();
+
+        getAllPersonFromBmob();
+    }
+
+    private void getAllPersonFromBmob(){
+        BmobQuery<Person> query = new BmobQuery<Person>();
+        query.findObjects(this, new FindListener<Person>() {
+            @Override
+            public void onSuccess(List<Person> list) {
+                IUser iUser = new UserDao(LoginActivity.this);
+                for (Person person : list) {
+                    String personId = person.getObjectId();
+                    String nick = person.getNick();
+                    String location = person.getLocation();
+                    Integer gender = person.getGender();
+                    String avatar = person.getAvatar();
+                    Integer age = person.getAge();
+                    Log.i(TAG,personId + " " + nick + " " + location + " " + gender + " " + avatar + " " + age);
+
+                    Object[] params = {personId, nick, location, gender, avatar, age};
+                    iUser.addPerson(params);
+                }
+
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
     }
 
     private void getUserName(){

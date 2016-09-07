@@ -30,7 +30,7 @@ public class UserDao implements IUser {
     private String insertPersonUser = "insert into user_person_id(personObjId, userObjId) values(?, ?)";
     private String selectPeronUserTableByUserObjId = "select personObjId from user_person_id where userObjId = ?";
 
-    private String replacePerson = "replace into person(personId, nick, location, gender, avatar, age) values(?, ?, ?, ?, ?, ?)";
+    private String insertPerson = "insert into person(personId, nick, location, gender, avatar, age) values(?, ?, ?, ?, ?, ?)";
     private String selectAllPerson = "select * from person";
 
     private DBOpenHelper helper = null;
@@ -270,7 +270,7 @@ public class UserDao implements IUser {
         SQLiteDatabase database = null;
         try {
             database = helper.getWritableDatabase();
-            database.execSQL(replacePerson, params);
+            database.execSQL(insertPerson, params);
             flag = true;
         }catch (Exception e){
             e.printStackTrace();
@@ -289,11 +289,11 @@ public class UserDao implements IUser {
             database = helper.getReadableDatabase();
             Cursor cursor = database.rawQuery(selectAllPerson, null);
             while (cursor.moveToNext()){
-                String name = cursor.getString(2);
-                String location = cursor.getString(3);
-                Integer gender = cursor.getInt(4);
-                String avatar = cursor.getString(5);
-                Integer age = cursor.getInt(6);
+                String name = cursor.getString(1);
+                String location = cursor.getString(2);
+                Integer gender = cursor.getInt(3);
+                String avatar = cursor.getString(4);
+                Integer age = cursor.getInt(5);
 
                 Person person = new Person();
                 person.setNick(name);
