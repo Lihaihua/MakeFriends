@@ -25,7 +25,7 @@ public class PhotoUtil {
 				Environment.DIRECTORY_PICTURES);
 	    File image = null;
 		try {
-			image = File.createTempFile(
+			image = File.createTempFile(//此处若sdcard没有插好image将为null,Uri.fromFile(image)将崩溃
 					imageFileName,  /* prefix */
 					".jpg",         /* suffix */
 					storageDir      /* directory */

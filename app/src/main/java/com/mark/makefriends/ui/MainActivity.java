@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
@@ -213,12 +212,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Person person : list_person){
             String nick = person.getNick();
             String img_url = person.getAvatar();
-            Uri uri = Uri.parse(img_url);
 
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("img", uri);
-            map.put("info", nick);
-            list.add(map);
+            if (img_url != null){
+                Uri uri = Uri.parse(img_url);
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("img", uri);
+                map.put("info", nick);
+                list.add(map);
+            }
+
         }
 
         return list;
