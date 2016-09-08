@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,9 +20,13 @@ import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
+import com.mark.makefriends.event.LocationEvent;
+import com.mark.makefriends.support.BusProvider;
 import com.mark.makefriends.support.CircularImage;
+import com.mark.makefriends.support.Location;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
+import com.mark.makefriends.support.otto.Subscribe;
 import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.MyApp;
 import com.mark.mylibrary.SwipeFlingAdapterView;
@@ -34,6 +39,7 @@ import java.util.Map;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/5/14.
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout setting;
     CircularImage userHead;
 
+    private static final String TAG = "MainActivity";
     private int i;
     private SwipeFlingAdapterView flingContainer;
     private Button leftBtn;
@@ -67,10 +74,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
 
+        BusProvider.getInstance().regist(this);
+
         mActivity = this;
 
         initDrawerView();
         initSwipeView();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Location.INSTANCE.startLocation();
+    }
+
+    @Override
+    public void onDestroy(){
+        BusProvider.getInstance().unregist(this);
+        super.onDestroy();
     }
 
     private List<Person> getAllPersonInfoFromDB(){
@@ -210,6 +231,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         List<Person> list_person = getAllPersonInfoFromDB();
         for (Person person : list_person){
+
+            Log.i(TAG, person.getObjectId() + " " + person.getNick() + " " + person.getLocation() + " " + person.getGender() + " " + person.getAvatar() + " " + person.getAge());
+
             String nick = person.getNick();
             String img_url = person.getAvatar();
 

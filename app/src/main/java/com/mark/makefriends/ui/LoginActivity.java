@@ -15,9 +15,12 @@ import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
+import com.mark.makefriends.event.LocationEvent;
+import com.mark.makefriends.support.BusProvider;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
+import com.mark.makefriends.support.otto.Subscribe;
 import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.MyApp;
 
@@ -32,7 +35,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "LoginActivity";
     private View ll_login;
     private View ll_back;
     private TextView title;
@@ -49,6 +52,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        BusProvider.getInstance().regist(this);
 
         mActivity = this;
 
@@ -70,12 +75,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         cover_user_photo = (CircularImage) findViewById(R.id.cover_user_photo);
         cover_user_photo.setImageResource(R.drawable.loginlogo);
-
-        //更新用户地理位置
-        updateUserCity();
     }
 
-    private void updateUserCity(){
+    @Override
+    public void onResume(){
+        super.onResume();
+        getUserName();
+        getAllPersonFromBmob();
+    }
+
+    @Override
+    public void onDestroy(){
+        BusProvider.getInstance().unregist(this);
+        super.onDestroy();
+    }
+
+    @Subscribe
+    public void onLocationEvent(LocationEvent event){
+        updateUserCity(event.city);
+    }
+
+    private void updateUserCity(String city){
         IUser user = new UserDao(LoginActivity.this);
         String userObjId = "";
         if (MyApp.getCurrentUser() != null){
@@ -86,7 +106,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
 
         Person person = new Person();
-        person.setValue("location", MyApp.getCity());
+        person.setValue("location", city);
         person.update(getApplicationContext(), personObjId, new UpdateListener() {
             @Override
             public void onSuccess() {
@@ -98,17 +118,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
             }
         });
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        getUserName();
-
-        //更新用户地理位置
-        updateUserCity();
-
-        getAllPersonFromBmob();
     }
 
     private void getAllPersonFromBmob(){
@@ -124,12 +133,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     Integer gender = person.getGender();
                     String avatar = person.getAvatar();
                     Integer age = person.getAge();
-                    Log.i(TAG,personId + " " + nick + " " + location + " " + gender + " " + avatar + " " + age);
 
                     Object[] params = {personId, nick, location, gender, avatar, age};
                     iUser.addPerson(params);
                 }
-
             }
 
             @Override

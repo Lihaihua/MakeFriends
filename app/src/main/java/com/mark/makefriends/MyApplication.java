@@ -13,6 +13,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.im.MessageHandler;
+import com.mark.makefriends.support.Location;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
@@ -29,8 +30,6 @@ import cn.bmob.v3.listener.FindListener;
 public class MyApplication extends Application{
     private static final String TAG = "MyApplication";
     public static MyApplication app;
-    private AMapLocationClient locationClient = null;
-    private AMapLocationClientOption locationOption = new AMapLocationClientOption();
 
     @Override
     public void onCreate(){
@@ -48,63 +47,13 @@ public class MyApplication extends Application{
         }
 
         //初始化定位
-        initLocation();
+        Location.INSTANCE.initLocation();
 
         //初始化Fresco
         Fresco.initialize(this);
 
         //查询Bmob云端 person表
         queryPersonTable();
-    }
-
-    private void initLocation(){
-        locationClient = new AMapLocationClient(app);
-        setLocationOption();
-        locationClient.setLocationListener(locationListener);
-        startLocation();
-    }
-
-    private void startLocation(){
-        locationClient.startLocation();
-    }
-
-    private void stopLocation(){
-        locationClient.stopLocation();
-    }
-
-    private void destroyLocation(){
-        if (locationClient != null){
-            locationClient.onDestroy();
-            locationClient = null;
-            locationOption = null;
-        }
-    }
-
-    AMapLocationListener locationListener = new AMapLocationListener() {
-        @Override
-        public void onLocationChanged(AMapLocation aMapLocation) {
-            if (MyApp.parseLocation(aMapLocation)){
-                stopLocation();
-            }
-        }
-    };
-
-    private void setLocationOption(){
-        // 设置是否需要显示地址信息
-        locationOption.setNeedAddress(true);
-        /**
-         * 设置是否优先返回GPS定位结果，如果30秒内GPS没有返回定位结果则进行网络定位
-         * 注意：只有在高精度模式下的单次定位有效，其他方式无效
-         */
-        locationOption.setGpsFirst(true);
-        // 设置是否开启缓存
-        locationOption.setLocationCacheEnable(true);
-        //设置是否等待设备wifi刷新，如果设置为true,会自动变为单次定位，持续定位时不要使用
-        locationOption.setOnceLocationLatest(true);
-        // 设置发送定位请求的时间间隔,最小值为1000，如果小于1000，按照1000算
-        locationOption.setInterval(-1);//设置定位一次
-        // 设置网络请求超时时间
-        locationOption.setHttpTimeOut(30000);
     }
 
     /**
