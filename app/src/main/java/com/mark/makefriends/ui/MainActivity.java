@@ -236,12 +236,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             String nick = person.getNick();
             String img_url = person.getAvatar();
+            String location = person.getLocation();
+            Integer gender = 1;
+            Integer age = 18;
+            String sign = "总有一天会遇到,阳光灿烂的你!";
 
             if (img_url != null){
                 Uri uri = Uri.parse(img_url);
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("img", uri);
-                map.put("info", nick);
+                map.put("nick", nick);
+                map.put("gender", gender);
+                map.put("age", age);
+                map.put("location", location);
+                map.put("sign", sign);
                 list.add(map);
             }
 

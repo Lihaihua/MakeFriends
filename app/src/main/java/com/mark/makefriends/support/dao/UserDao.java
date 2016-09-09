@@ -60,9 +60,10 @@ public class UserDao implements IUser {
     public List<String> selectUserObjId() {
         List<String> userObjId = new ArrayList<String>();
         SQLiteDatabase database = null;
+        Cursor cursor = null;
         try{
             database = helper.getReadableDatabase();
-            Cursor cursor = database.rawQuery(selectUserObjId, null);
+            cursor = database.rawQuery(selectUserObjId, null);
             while (cursor.moveToNext()){
                 userObjId.add(cursor.getString(0));
             }
@@ -70,6 +71,7 @@ public class UserDao implements IUser {
             e.printStackTrace();
         }finally {
             if (database != null){
+                cursor.close();
                 database.close();
             }
         }
@@ -113,9 +115,10 @@ public class UserDao implements IUser {
     public String selectPersonObjIdByUserObjId(String[] selectionArgs) {
         String personObjId = "";
         SQLiteDatabase database = null;
+        Cursor cursor = null;
         try{
             database = helper.getReadableDatabase();
-            Cursor cursor = database.rawQuery(selectPeronUserTableByUserObjId, selectionArgs);
+            cursor = database.rawQuery(selectPeronUserTableByUserObjId, selectionArgs);
             int colums = cursor.getColumnCount();
             while (cursor.moveToNext()){
                 for (int i = 0; i < colums; i++){
@@ -132,6 +135,7 @@ public class UserDao implements IUser {
             e.printStackTrace();
         }finally {
             if (database != null){
+                cursor.close();
                 database.close();
             }
         }
@@ -184,10 +188,11 @@ public class UserDao implements IUser {
     public Map<String, String> selectSingleRcd(String[] selectionArgs) {
         Map<String, String> map = new HashMap<String, String>();
         SQLiteDatabase database = null;
+        Cursor cursor = null;
         try {
             database = helper.getReadableDatabase();
             //声明一个游标，这个是行查询的操作，支持原生SQL语句的查询
-            Cursor cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
+            cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
             int colums = cursor.getColumnCount();//获得数据库的列的个数
             //cursor.moveToNext() 移动到下一条记录
             while (cursor.moveToNext()){
@@ -205,6 +210,7 @@ public class UserDao implements IUser {
             e.printStackTrace();
         }finally {
             if (database != null){
+                cursor.close();
                 database.close();
             }
         }
@@ -219,11 +225,12 @@ public class UserDao implements IUser {
     @Override
     public Bitmap getHostUserHead(String[] selectionArgs) {
         SQLiteDatabase database = null;
+        Cursor cursor = null;
         Bitmap bmp = null;
         try {
             database = helper.getReadableDatabase();
             //声明一个游标，这个是行查询的操作，支持原生SQL语句的查询
-            Cursor cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
+            cursor = database.rawQuery(selectAllHostUserById, selectionArgs); //ID所在行查询
             int colums = cursor.getColumnCount();//获得数据库的列的个数
             //cursor.moveToNext() 移动到下一条记录
             while (cursor.moveToNext()) {
@@ -239,6 +246,7 @@ public class UserDao implements IUser {
             e.printStackTrace();
         }finally {
             if (database != null){
+                cursor.close();
                 database.close();
             }
         }
@@ -285,9 +293,10 @@ public class UserDao implements IUser {
     @Override public List<Person> selectAllPerson(){
         List<Person> personList = new ArrayList<Person>();
         SQLiteDatabase database = null;
+        Cursor cursor = null;
         try{
             database = helper.getReadableDatabase();
-            Cursor cursor = database.rawQuery(selectAllPerson, null);
+            cursor = database.rawQuery(selectAllPerson, null);
             while (cursor.moveToNext()){
                 String name = cursor.getString(1);
                 String location = cursor.getString(2);
@@ -308,6 +317,7 @@ public class UserDao implements IUser {
             e.printStackTrace();
         }finally {
             if (database != null){
+                cursor.close();
                 database.close();
             }
         }

@@ -174,6 +174,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         i.setClass(mActivity, MainActivity.class);
                         startActivity(i);
                         dismissProgressDialog();
+                        finish();
                     }
 
                     @Override
