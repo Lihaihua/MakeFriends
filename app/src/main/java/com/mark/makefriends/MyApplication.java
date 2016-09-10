@@ -3,13 +3,8 @@ package com.mark.makefriends;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.im.MessageHandler;
@@ -54,6 +49,8 @@ public class MyApplication extends Application{
 
         //查询Bmob云端 person表
         queryPersonTable();
+
+        Log.i(TAG, "SHA1: " + MyApp.getSha1(this));
     }
 
     /**

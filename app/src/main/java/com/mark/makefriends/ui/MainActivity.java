@@ -39,7 +39,6 @@ import java.util.Map;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/5/14.
@@ -92,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onDestroy(){
         BusProvider.getInstance().unregist(this);
         super.onDestroy();
+    }
+
+    @Subscribe
+    public void onLocationEvent(LocationEvent event){
+        Location.INSTANCE.updateUserCity(event.city);
     }
 
     private List<Person> getAllPersonInfoFromDB(){

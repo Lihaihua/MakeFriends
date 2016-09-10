@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,25 +13,21 @@ import android.widget.Toast;
 import com.mark.makefriends.ErrorCode;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Person;
-import com.mark.makefriends.bean.User;
 import com.mark.makefriends.event.LocationEvent;
 import com.mark.makefriends.support.BusProvider;
 import com.mark.makefriends.support.CircularImage;
+import com.mark.makefriends.support.Location;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.support.otto.Subscribe;
-import com.mark.makefriends.utils.BitmapUtil;
-import com.mark.makefriends.utils.MyApp;
 
 import java.util.List;
 import java.util.Map;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "LoginActivity";
@@ -92,32 +87,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     @Subscribe
     public void onLocationEvent(LocationEvent event){
-        updateUserCity(event.city);
-    }
-
-    private void updateUserCity(String city){
-        IUser user = new UserDao(LoginActivity.this);
-        String userObjId = "";
-        if (MyApp.getCurrentUser() != null){
-            userObjId = MyApp.getCurrentUser().getObjectId();
-        }
-
-        String[] seleStr = {userObjId};
-        String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
-
-        Person person = new Person();
-        person.setValue("location", city);
-        person.update(getApplicationContext(), personObjId, new UpdateListener() {
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-
-            }
-        });
+        Location.INSTANCE.updateUserCity(event.city);
     }
 
     private void getAllPersonFromBmob(){

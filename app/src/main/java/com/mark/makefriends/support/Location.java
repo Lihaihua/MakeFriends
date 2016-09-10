@@ -5,7 +5,12 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.mark.makefriends.MyApplication;
+import com.mark.makefriends.bean.Person;
+import com.mark.makefriends.support.dao.IUser;
+import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
+
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/9/8.
@@ -64,5 +69,30 @@ public enum  Location {
         locationOption.setInterval(-1);//设置定位一次
         // 设置网络请求超时时间
         locationOption.setHttpTimeOut(30000);
+    }
+
+    public void updateUserCity(String city){
+        IUser user = new UserDao(MyApplication.app);
+        String userObjId = "";
+        if (MyApp.getCurrentUser() != null){
+            userObjId = MyApp.getCurrentUser().getObjectId();
+        }
+
+        String[] seleStr = {userObjId};
+        String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
+
+        Person person = new Person();
+        person.setValue("location", city);
+        person.update(MyApplication.app, personObjId, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
     }
 }
