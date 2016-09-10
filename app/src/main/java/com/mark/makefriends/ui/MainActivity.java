@@ -1,7 +1,6 @@
 package com.mark.makefriends.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -10,12 +9,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
@@ -30,6 +29,7 @@ import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.support.otto.Subscribe;
 import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.MyApp;
+import com.mark.makefriends.utils.ToastUtil;
 import com.mark.mylibrary.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -184,29 +184,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mData = getAllData();
 
-        final MyAdapter myAdapter = new MyAdapter(this, mData);
+        final MyAdapter myAdapter = new MyAdapter(getApplicationContext(), mData);
         flingContainer.setAdapter(myAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
-                mData.remove(0);
+                if (mData.size() > 0) {
+                    mData.remove(0);
+                }
+
                 myAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                makeToast(MainActivity.this, "不喜欢");
+                ToastUtil.showToast(MainActivity.this, "不喜欢", Gravity.BOTTOM);
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                makeToast(MainActivity.this, "喜欢");
+                ToastUtil.showToast(MainActivity.this, "喜欢", Gravity.BOTTOM);
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
+                Log.i(TAG, "itemsInAdapter: " + itemsInAdapter);
                 // Ask for more data here
-
+                myAdapter.notifyDataSetChanged();
                 i++;
             }
 
@@ -221,14 +225,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                makeToast(MainActivity.this, "Clicked");
+
             }
         });
 
-    }
-
-    static void makeToast(Context ctx, String s){
-        Toast.makeText(ctx, s, Toast.LENGTH_SHORT).show();
     }
 
     private List<Map<String, Object>> getAllData() {
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Person> list_person = getAllPersonInfoFromDB();
         for (Person person : list_person){
 
-            Log.i(TAG, person.getObjectId() + " " + person.getNick() + " " + person.getLocation() + " " + person.getGender() + " " + person.getAvatar() + " " + person.getAge());
+            //Log.i(TAG, person.getObjectId() + " " + person.getNick() + " " + person.getLocation() + " " + person.getGender() + " " + person.getAvatar() + " " + person.getAge());
 
             String nick = person.getNick();
             String img_url = person.getAvatar();
@@ -316,4 +316,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 }

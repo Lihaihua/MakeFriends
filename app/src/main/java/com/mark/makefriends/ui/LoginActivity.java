@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private TextView register;
     private TextView findPassword;
     private Activity mActivity;
-    public static CircularImage cover_user_photo;
+    private CircularImage cover_user_photo;
     private Uri imageUri;
 
     @Override

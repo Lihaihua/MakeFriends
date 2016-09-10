@@ -34,7 +34,7 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return i;
+        return mData.get(i);
     }
 
     @Override
@@ -53,7 +53,8 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
+
+        ViewHolder holder = null;
 
         if (view == null){
             holder = new ViewHolder();
@@ -80,6 +81,7 @@ public class MyAdapter extends BaseAdapter {
         }else {
             holder.gender.setImageResource(R.drawable.female);
         }
+
         return view;
     }
 

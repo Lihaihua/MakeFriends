@@ -12,6 +12,7 @@ import com.mark.makefriends.support.Location;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.List;
 
@@ -51,6 +52,9 @@ public class MyApplication extends Application{
         queryPersonTable();
 
         Log.i(TAG, "SHA1: " + MyApp.getSha1(this));
+
+        //初始化LeakCanary
+        LeakCanary.install(this);
     }
 
     /**
