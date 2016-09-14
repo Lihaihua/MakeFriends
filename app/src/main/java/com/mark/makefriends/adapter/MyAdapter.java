@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,34 +13,19 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.makefriends.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Administrator on 2016/5/4.
  */
-public class MyAdapter extends BaseAdapter {
+public class MyAdapter extends ArrayAdapter<Map<String, Object>> {
     private LayoutInflater mInflater;
-    private List<Map<String, Object>> mData;
 
     public MyAdapter(Context context, List<Map<String, Object>> data){
+        super(context, R.layout.item, data);
         this.mInflater = LayoutInflater.from(context);
-        mData = data;
-    }
-
-    @Override
-    public int getCount() {
-        return mData.size();
-    }
-
-    @Override
-    public Object getItem(int i) {
-        return mData.get(i);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return i;
     }
 
     public static class ViewHolder{
@@ -53,7 +39,7 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
+        Map<String, Object> data = getItem(i);
         ViewHolder holder = null;
 
         if (view == null){
@@ -71,17 +57,16 @@ public class MyAdapter extends BaseAdapter {
             holder = (ViewHolder)view.getTag();
         }
 
-        holder.user_img.setImageURI((Uri) mData.get(i).get("img"));
-        holder.nick.setText((String) mData.get(i).get("nick") + "  ");
-        holder.age.setText(Integer.toString((Integer)mData.get(i).get("age")) + "岁  ");
-        holder.location.setText((String) mData.get(i).get("location"));
-        holder.sign.setText((String) mData.get(i).get("sign"));
-        if ((Integer)mData.get(i).get("gender") == 0){
+        holder.user_img.setImageURI((Uri)data.get("img"));
+        holder.nick.setText(data.get("nick") + "  ");
+        holder.age.setText(data.get("age") + "岁  ");
+        holder.location.setText((String)data.get("location"));
+        holder.sign.setText((String)data.get("sign"));
+        if ((Integer)data.get("gender") == 0){
             holder.gender.setImageResource(R.drawable.male);
         }else {
             holder.gender.setImageResource(R.drawable.female);
         }
-
         return view;
     }
 

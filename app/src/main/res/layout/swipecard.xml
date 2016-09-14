@@ -10,8 +10,8 @@
         android:layout_height="455dp"
         android:layout_gravity="center_horizontal"
         app:rotation_degrees="16"
-        app:max_visible="4"
-        app:min_adapter_stack="6"
+        app:max_visible="2"
+        app:min_adapter_stack="0"
         tools:context=".ui.MainActivity" />
 
     <include layout="@layout/buttons" />
