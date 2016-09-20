@@ -7,7 +7,7 @@
         android:id="@+id/btn_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/balck50"
+        android:background="@color/black50"
         android:text="@string/camera"
         android:textColor="@color/white"
         android:visibility="invisible"/>
@@ -18,7 +18,7 @@
         android:id="@+id/btn_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/balck50"
+        android:background="@color/black50"
         android:text="@string/album"
         android:textColor="@color/white"/>
 </LinearLayout>

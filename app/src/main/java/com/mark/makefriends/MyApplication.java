@@ -1,5 +1,6 @@
 package com.mark.makefriends;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
@@ -14,6 +15,7 @@ import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.utils.MyApp;
 import com.squareup.leakcanary.LeakCanary;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import cn.bmob.newim.BmobIM;
@@ -25,13 +27,41 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class MyApplication extends Application{
     private static final String TAG = "MyApplication";
-    public static MyApplication app;
+    public static MyApplication instance;
+    private List<Activity> mList = new LinkedList();
+
+    public static MyApplication getInstance(){
+        return instance;
+    }
+
+    public void addActivity(Activity activity){
+        mList.add(activity);
+    }
+
+    public void exit(){
+        try {
+            for (Activity activity : mList){
+                if (activity != null){
+                    activity.finish();
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.exit(0);
+        }
+    }
+
+    public void onLowMemory(){
+        super.onLowMemory();
+        System.gc();
+    }
 
     @Override
     public void onCreate(){
         super.onCreate();
-        app = this;
 
+        instance = this;
         if (getApplicationInfo().packageName.equals(getMyProcessName(this))){
             Log.i(TAG, "init Bmob sdk!");
             //Bmob sdk初始化
@@ -79,7 +109,7 @@ public class MyApplication extends Application{
         query.findObjects(this, new FindListener<Person>() {
             @Override
             public void onSuccess(List<Person> list) {
-                IUser user = new UserDao(app);
+                IUser user = new UserDao(getApplicationContext());
                 for (Person person : list){
                     Object[] params = {person.getObjectId(), person.getUser().getObjectId()};
                     user.addPersonUser(params);

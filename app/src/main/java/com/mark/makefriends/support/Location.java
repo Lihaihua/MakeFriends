@@ -31,7 +31,7 @@ public enum  Location {
     };
 
     public void initLocation(){
-        locationClient = new AMapLocationClient(MyApplication.app);
+        locationClient = new AMapLocationClient(MyApplication.getInstance());
         setLocationOption();
         locationClient.setLocationListener(locationListener);
         startLocation();
@@ -72,7 +72,7 @@ public enum  Location {
     }
 
     public void updateUserCity(String city){
-        IUser user = new UserDao(MyApplication.app);
+        IUser user = new UserDao(MyApplication.getInstance());
         String userObjId = "";
         if (MyApp.getCurrentUser() != null){
             userObjId = MyApp.getCurrentUser().getObjectId();
@@ -83,7 +83,7 @@ public enum  Location {
 
         Person person = new Person();
         person.setValue("location", city);
-        person.update(MyApplication.app, personObjId, new UpdateListener() {
+        person.update(MyApplication.getInstance(), personObjId, new UpdateListener() {
             @Override
             public void onSuccess() {
 

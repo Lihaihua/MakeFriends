@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--分割线-->
+    <dimen name="line_thick">2px</dimen>
+    <dimen name="line_thin">1px</dimen>
+
+    <dimen name="standard_border_left">12dp</dimen>
 </resources>

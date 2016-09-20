@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/setting_bg"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_thin"
+        android:layout_marginTop="17dp"
+        android:background="@color/line"/>
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/selector_list_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/standard_border_left"
+        android:paddingRight="@dimen/standard_border_left">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/about"
+            android:textColor="#585858"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_thin"
+        android:background="@color/line"/>
+    <RelativeLayout
+        android:id="@+id/rl_login_out"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/selector_list_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/standard_border_left"
+        android:paddingRight="@dimen/standard_border_left">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/login_out"
+            android:textColor="#585858"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

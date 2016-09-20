@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mark.makefriends.ErrorCode;
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.event.LocationEvent;
@@ -70,6 +71,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         cover_user_photo = (CircularImage) findViewById(R.id.cover_user_photo);
         cover_user_photo.setImageResource(R.drawable.loginlogo);
+
+        MyApplication.getInstance().addActivity(this);
     }
 
     @Override
@@ -144,7 +147,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         i.setClass(mActivity, MainActivity.class);
                         startActivity(i);
                         dismissProgressDialog();
-                        finish();
+                        //finish();gnam
                     }
 
                     @Override

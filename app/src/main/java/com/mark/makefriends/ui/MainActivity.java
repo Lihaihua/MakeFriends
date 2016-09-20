@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
 import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initDrawerView();
         initSwipeView();
+
+        MyApplication.getInstance().addActivity(this);
     }
 
     @Override
@@ -303,6 +306,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.friends:
                 break;
             case R.id.setting:
+                SettingsActivity.skipTo(this);
                 break;
             case R.id.left:
                 left();

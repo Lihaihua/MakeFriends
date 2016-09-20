@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
 
 import cn.bmob.v3.BmobUser;
@@ -35,6 +36,8 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
         etEmail = (EditText)findViewById(R.id.et_email);
         btFindPassword = (Button)findViewById(R.id.btn_find_password);
         btFindPassword.setOnClickListener(this);
+
+        MyApplication.getInstance().addActivity(this);
     }
 
     @Override

@@ -19,4 +19,8 @@
     <string name="setting">设置</string>
     <string name="find_password">修改密码</string>
     <string name="sign">签名：</string>
+    <string name="about">关于约吧</string>
+    <string name="login_out">退出</string>
+    <string name="ensure_dialog_ensure">确定</string>
+    <string name="ensure_dialog_cancel">取消</string>
 </resources>

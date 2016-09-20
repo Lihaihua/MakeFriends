@@ -51,6 +51,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         email = (EditText)findViewById(R.id.et_email);
         registerBtn = (Button)findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(this);
+
+        MyApplication.getInstance().addActivity(this);
     }
 
     @Override

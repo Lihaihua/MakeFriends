@@ -64,6 +64,7 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
         <activity android:name=".ui.FindPasswordActivity"/>
         <activity android:name=".ui.FrescoTestActivity"/>
+        <activity android:name=".ui.SettingsActivity"/>
     </application>
 
     <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver" >

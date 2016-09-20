@@ -8,10 +8,15 @@
     <color name="black">#000000</color>
     <color name="gray21">#363636</color>
     <color name="gray22">#DBDBDB</color>
-    <color name="balck50">#7F000000</color>
+    <color name="setting_bg">#EBEBEB</color>
+    <color name="line">#D8D8D8</color>
+    <color name="list_item_press">#D9D9D9</color>
+    <color name="black50">#7F000000</color>
     <color name="alpha">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="login_bg">#F4F4F4</color>
     <color name="green">#66BF06</color>
     <color name="highlight">#f3f3f3</color>
+    <color name="huang_normal">#fff1c40f</color>
+    <color name="line_hei">#131313</color>
 </resources>

@@ -2,6 +2,7 @@ package com.mark.makefriends.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,4 +51,5 @@ public class BaseActivity extends Activity implements View.OnTouchListener{
             pd = null;
         }
     }
+
 }

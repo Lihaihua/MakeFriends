@@ -36,7 +36,7 @@ public class MyApp {
     }
 
     public static User getCurrentUser() {
-        return BmobUser.getCurrentUser(MyApplication.app, User.class);
+        return BmobUser.getCurrentUser(MyApplication.getInstance(), User.class);
     }
 
     public static String getPersonObjId() {
