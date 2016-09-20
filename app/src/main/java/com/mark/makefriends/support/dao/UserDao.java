@@ -29,6 +29,7 @@ public class UserDao implements IUser {
 
     private String insertPersonUser = "insert into user_person_id(personObjId, userObjId) values(?, ?)";
     private String selectPeronUserTableByUserObjId = "select personObjId from user_person_id where userObjId = ?";
+    private String selectPeronUserTableByPersonObjId = "select userObjId from user_person_id where personObjId = ?";
 
     private String insertPerson = "insert into person(personId, nick, location, gender, avatar, age) values(?, ?, ?, ?, ?, ?)";
     private String selectAllPerson = "select * from person";
@@ -130,6 +131,37 @@ public class UserDao implements IUser {
                 }
             }
             return personObjId;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (database != null){
+                cursor.close();
+                database.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String selectUserObjIdByPersonObjId(String[] selectionArgs) {
+        String userObjId = "";
+        SQLiteDatabase database = null;
+        Cursor cursor = null;
+        try{
+            database = helper.getReadableDatabase();
+            cursor = database.rawQuery(selectPeronUserTableByPersonObjId, selectionArgs);
+            int colums = cursor.getColumnCount();
+            while (cursor.moveToNext()){
+                for (int i = 0; i < colums; i++){
+                    String cols_name = cursor.getColumnName(i);//提取列的名称
+                    if ("userObjId".equals(cols_name)){
+                        String cols_value = cursor.getString(cursor.getColumnIndex(cols_name));//根据列的名称提取列的值
+                        userObjId = cols_value;
+                    }
+                }
+            }
+            return userObjId;
 
         }catch (Exception e){
             e.printStackTrace();
@@ -298,6 +330,7 @@ public class UserDao implements IUser {
             database = helper.getReadableDatabase();
             cursor = database.rawQuery(selectAllPerson, null);
             while (cursor.moveToNext()){
+                String id = cursor.getString(0);
                 String name = cursor.getString(1);
                 String location = cursor.getString(2);
                 Integer gender = cursor.getInt(3);
@@ -305,6 +338,7 @@ public class UserDao implements IUser {
                 Integer age = cursor.getInt(5);
 
                 Person person = new Person();
+                person.setObjectId(id);
                 person.setNick(name);
                 person.setLocation(location);
                 person.setGender(gender);

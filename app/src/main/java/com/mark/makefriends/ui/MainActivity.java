@@ -242,6 +242,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Log.i(TAG, person.getObjectId() + " " + person.getNick() + " " + person.getLocation() + " " + person.getGender() + " " + person.getAvatar() + " " + person.getAge());
 
+            String personObjectId = person.getObjectId();
+            IUser user = new UserDao(MyApplication.getInstance());
+            String[] seleStr = {personObjectId};
+            String userObjId = user.selectUserObjIdByPersonObjId(seleStr);
+
             String nick = person.getNick();
             String img_url = person.getAvatar();
             String location = person.getLocation();
@@ -252,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (img_url != null){
                 Uri uri = Uri.parse(img_url);
                 Map<String, Object> map = new HashMap<String, Object>();
+                map.put("userObjId", userObjId);
                 map.put("img", uri);
                 map.put("nick", nick);
                 map.put("gender", gender);

@@ -27,6 +27,7 @@ public interface IUser {
 
     public boolean addPersonUser(Object[] params);
     public String selectPersonObjIdByUserObjId(String[] selectionArgs);
+    public String selectUserObjIdByPersonObjId(String[] selectionArgs);
 
     public boolean addPerson(Object[] params);
     public List<Person>  selectAllPerson();
