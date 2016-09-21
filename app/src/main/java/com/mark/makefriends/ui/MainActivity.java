@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
@@ -22,6 +23,7 @@ import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.event.LocationEvent;
+import com.mark.makefriends.event.RefreshEvent;
 import com.mark.makefriends.support.BusProvider;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.Location;
@@ -38,7 +40,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.core.ConnectionStatus;
+import cn.bmob.newim.listener.ConnectListener;
+import cn.bmob.newim.listener.ConnectStatusChangeListener;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 
@@ -81,6 +89,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initDrawerView();
         initSwipeView();
+
+        //connect server
+        User user = BmobUser.getCurrentUser(this, User.class);
+        BmobIM.connect(user.getObjectId(), new ConnectListener() {
+            @Override
+            public void done(String s, BmobException e) {
+                if (e == null) {
+                    Log.i(TAG, "connect success");
+                    //服务器连接成功就发送一个更新事件，同步更新会话及主页的小红点
+                    BusProvider.getInstance().post(new RefreshEvent());
+                } else {
+                    Log.i(TAG, e.getErrorCode() + "/" + e.getMessage());
+                }
+            }
+        });
+        //监听连接状态，也可通过BmobIM.getInstance().getCurrentStatus()来获取当前的长连接状态
+        BmobIM.getInstance().setOnConnectStatusChangeListener(new ConnectStatusChangeListener() {
+            @Override
+            public void onChange(ConnectionStatus connectionStatus) {
+                ToastUtil.showToast(MainActivity.this, "" + connectionStatus.getMsg(), Gravity.BOTTOM);
+            }
+        });
+
 
         MyApplication.getInstance().addActivity(this);
     }

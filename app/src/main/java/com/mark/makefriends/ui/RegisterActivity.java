@@ -74,9 +74,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                         dismissProgressDialog();
                         Toast.makeText(getApplicationContext(), "注册成功!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent();
-                        intent.setClass(getApplicationContext(), CompleteUserInfoActivity.class);
-                        startActivity(intent);
+                        startActivity(CompleteUserInfoActivity.class, null);
 
                         //注册成功后将用户名密码存储在本地数据库
                         IUser user = new UserDao(RegisterActivity.this);

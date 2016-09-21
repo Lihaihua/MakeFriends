@@ -143,11 +143,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 bu2.login(this, new SaveListener() {
                     @Override
                     public void onSuccess() {
-                        Intent i = new Intent();
-                        i.setClass(mActivity, MainActivity.class);
-                        startActivity(i);
+                        startActivity(MainActivity.class, null);
                         dismissProgressDialog();
-                        //finish();gnam
+                        finish();
                     }
 
                     @Override
@@ -164,14 +162,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 break;
 
             case R.id.register:
-                Intent intent = new Intent();
-                intent.setClass(this, RegisterActivity.class);
-                startActivity(intent);
+                startActivity(RegisterActivity.class, null);
                 break;
             case R.id.find_password:
-                Intent intent1 = new Intent();
-                intent1.setClass(this,FindPasswordActivity.class);
-                startActivity(intent1);
+                startActivity(FindPasswordActivity.class, null);
             default:
                 break;
         }

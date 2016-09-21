@@ -4,6 +4,8 @@
     android:background="@color/setting_bg"
     android:orientation="vertical">
 
+    <include layout="@layout/top_bar"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_thin"
