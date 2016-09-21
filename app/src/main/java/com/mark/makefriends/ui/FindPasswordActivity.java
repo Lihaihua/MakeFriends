@@ -37,7 +37,7 @@ public class FindPasswordActivity extends BaseActivity implements View.OnClickLi
         btFindPassword = (Button)findViewById(R.id.btn_find_password);
         btFindPassword.setOnClickListener(this);
 
-        MyApplication.getInstance().addActivity(this);
+        //MyApplication.getInstance().addActivity(this);
     }
 
     @Override

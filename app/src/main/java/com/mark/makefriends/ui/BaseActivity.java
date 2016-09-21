@@ -55,7 +55,7 @@ public class BaseActivity extends Activity implements View.OnTouchListener{
 
     public void startActivity(Class<? extends Activity> target, Bundle bundle){
         Intent intent = new Intent();
-        intent.setClass(getApplicationContext(), target);
+        intent.setClass(this, target);
         if (bundle != null){
             intent.putExtra(getPackageName(), bundle);
         }

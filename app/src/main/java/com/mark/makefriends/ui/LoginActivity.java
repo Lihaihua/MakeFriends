@@ -72,7 +72,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         cover_user_photo = (CircularImage) findViewById(R.id.cover_user_photo);
         cover_user_photo.setImageResource(R.drawable.loginlogo);
 
-        MyApplication.getInstance().addActivity(this);
+        //MyApplication.getInstance().addActivity(this);
     }
 
     @Override

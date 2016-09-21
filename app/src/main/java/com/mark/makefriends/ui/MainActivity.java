@@ -31,6 +31,7 @@ import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.support.otto.Subscribe;
 import com.mark.makefriends.utils.BitmapUtil;
+import com.mark.makefriends.utils.IMMLeaks;
 import com.mark.makefriends.utils.MyApp;
 import com.mark.makefriends.utils.ToastUtil;
 import com.mark.mylibrary.SwipeFlingAdapterView;
@@ -112,8 +113,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        //解决leancanary提示InputMethodManager内存泄露的问题
+        IMMLeaks.fixFocusedViewLeak(getApplication());
 
-        MyApplication.getInstance().addActivity(this);
+        //MyApplication.getInstance().addActivity(this);
     }
 
     @Override

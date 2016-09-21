@@ -38,7 +38,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         mAbout.setOnClickListener(this);
         mLoginOut.setOnClickListener(this);
 
-        MyApplication.getInstance().addActivity(this);
+        //MyApplication.getInstance().addActivity(this);
     }
 
     public static void skipTo(Context context){

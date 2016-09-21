@@ -97,7 +97,7 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
         femaleBtn.setOnClickListener(this);
         seekBar.setOnSeekBarChangeListener(this);
 
-        MyApplication.getInstance().addActivity(this);
+        //MyApplication.getInstance().addActivity(this);
     }
 
     /**
