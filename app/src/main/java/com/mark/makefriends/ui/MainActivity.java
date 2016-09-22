@@ -45,11 +45,14 @@ import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.core.ConnectionStatus;
 import cn.bmob.newim.listener.ConnectListener;
 import cn.bmob.newim.listener.ConnectStatusChangeListener;
+import cn.bmob.push.lib.util.LogUtil;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by Administrator on 2016/5/14.
@@ -240,6 +243,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onRightCardExit(Object dataObject) {
+                String userObjId = ((HashMap<String, String>) dataObject).get("userObjId");
+                String nick = ((HashMap<String, String>) dataObject).get("nick");
+                Integer age = ((HashMap<String, Integer>) dataObject).get("age");
+                Integer gender = ((HashMap<String, Integer>) dataObject).get("gender");
+                String location = ((HashMap<String, String>) dataObject).get("location");
+                Uri img = ((HashMap<String, Uri>) dataObject).get("img");
+                String sign = ((HashMap<String, String>) dataObject).get("sign");
+
+                Person person_i_like = new Person();
+                person_i_like.setObjectId(userObjId);
+                person_i_like.setNick(nick);
+                person_i_like.setAge(age);
+                person_i_like.setGender(gender);
+                person_i_like.setLocation(location);
+                person_i_like.setAvatar(img.toString());
+                person_i_like.setSign(sign);
+
+                updatePersonContacts(person_i_like);
                 ToastUtil.showToast(MainActivity.this, "喜欢", Gravity.BOTTOM);
             }
 
@@ -266,6 +287,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+    }
+
+    private void updatePersonContacts(Person person_i_like){
+        Person person = new Person();
+
+        IUser user = new UserDao(MyApplication.getInstance());
+        String[] seleStr = {MyApp.getCurrentUser().getObjectId()};
+        String personObjId = user.selectPersonObjIdByUserObjId(seleStr);
+
+        person.setObjectId(personObjId);
+        BmobRelation relation = new BmobRelation();
+        relation.add(person_i_like);
+        person.setContacts(relation);
+        person.update(getApplicationContext(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                Log.i(TAG, "updatePersonContacts success");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.i(TAG, "updatePersonContacts fail");
+            }
+        });
     }
 
     private List<Map<String, Object>> getAllData() {

@@ -17,6 +17,7 @@ public class Person extends BmobObject{
     private BmobRelation contacts;//好友联系人
     private String location;//位置城市
     private Integer age;//年龄
+    private String sign;//签名
 
     public BmobUser getUser() {
         return user;
@@ -80,5 +81,13 @@ public class Person extends BmobObject{
 
     public void setAvatarFile(BmobFile avatarFile) {
         this.avatarFile = avatarFile;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
     }
 }
