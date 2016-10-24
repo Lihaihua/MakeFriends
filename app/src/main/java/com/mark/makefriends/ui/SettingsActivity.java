@@ -77,8 +77,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                     public void onClick(View v) {
                         BmobUser.logOut(getApplicationContext());
                         BmobIM.getInstance().disConnect();
-                        //MyApplication.getInstance().exit();
-                        startActivity(LoginActivity.class, null);
+
+                        getApplicationContext().sendBroadcast(new Intent("finishApp"));
                     }
                 });
                 loginOutDialog.show();

@@ -9,13 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <FrameLayout
+            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:background="@drawable/main_bg">
+            android:background="@drawable/main_bg"
+            tools:ignore="MergeRootFrame"
+            tools:context="com.mark.makefriends.ui.MainActivity">
 
-            <include layout="@layout/swipecard" />
+            <!--<include layout="@layout/swipecard" />-->
         </FrameLayout>
 
         <android.support.v7.widget.Toolbar

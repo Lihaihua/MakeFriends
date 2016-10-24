@@ -27,6 +27,7 @@ import com.mark.makefriends.event.RefreshEvent;
 import com.mark.makefriends.support.BusProvider;
 import com.mark.makefriends.support.CircularImage;
 import com.mark.makefriends.support.Location;
+import com.mark.makefriends.support.card.CardFragment;
 import com.mark.makefriends.support.dao.IUser;
 import com.mark.makefriends.support.dao.UserDao;
 import com.mark.makefriends.support.otto.Subscribe;
@@ -57,7 +58,7 @@ import cn.bmob.v3.listener.UpdateListener;
 /**
  * Created by Administrator on 2016/5/14.
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -71,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivity";
     private int i;
-    private SwipeFlingAdapterView flingContainer;
-    private Button leftBtn;
-    private Button rightBtn;
-    private Button centerBtn;
+    //private SwipeFlingAdapterView flingContainer;
+    //private Button leftBtn;
+    //private Button rightBtn;
+    //private Button centerBtn;
     private List<Map<String, Object>> mData;
 
     private Activity mActivity;
@@ -83,31 +84,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private List<User> userList;
 
     @Override
-    protected void onCreate(Bundle saveInstanceState){
+    public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (saveInstanceState == null){
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.content, new CardFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
 
         BusProvider.getInstance().regist(this);
 
         mActivity = this;
 
         initDrawerView();
-        initSwipeView();
+        //initSwipeView();
 
         //connect server
         User user = BmobUser.getCurrentUser(this, User.class);
-        BmobIM.connect(user.getObjectId(), new ConnectListener() {
-            @Override
-            public void done(String s, BmobException e) {
-                if (e == null) {
-                    Log.i(TAG, "connect success");
-                    //服务器连接成功就发送一个更新事件，同步更新会话及主页的小红点
-                    BusProvider.getInstance().post(new RefreshEvent());
-                } else {
-                    Log.i(TAG, e.getErrorCode() + "/" + e.getMessage());
+        if (user != null){
+            BmobIM.connect(user.getObjectId(), new ConnectListener() {
+                @Override
+                public void done(String s, BmobException e) {
+                    if (e == null) {
+                        Log.i(TAG, "connect success");
+                        //服务器连接成功就发送一个更新事件，同步更新会话及主页的小红点
+                        BusProvider.getInstance().post(new RefreshEvent());
+                    } else {
+                        Log.i(TAG, e.getErrorCode() + "/" + e.getMessage());
+                    }
                 }
-            }
-        });
+            });
+        }
+
         //监听连接状态，也可通过BmobIM.getInstance().getCurrentStatus()来获取当前的长连接状态
         BmobIM.getInstance().setOnConnectStatusChangeListener(new ConnectStatusChangeListener() {
             @Override
@@ -213,81 +224,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setting.setOnClickListener(this);
     }
 
-    private void initSwipeView(){
-        flingContainer = (SwipeFlingAdapterView)findViewById(R.id.frame1);
-        leftBtn = (Button)findViewById(R.id.left);
-        rightBtn = (Button)findViewById(R.id.right);
-        centerBtn = (Button)findViewById(R.id.center);
-        leftBtn.setOnClickListener(this);
-        rightBtn.setOnClickListener(this);
-        centerBtn.setOnClickListener(this);
-
-        mData = getAllData();
-
-        final MyAdapter myAdapter = new MyAdapter(getApplicationContext(), mData);
-        flingContainer.setAdapter(myAdapter);
-        flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
-            @Override
-            public void removeFirstObjectInAdapter() {
-                if (mData.size() > 0) {
-                    mData.remove(0);
-                }
-
-                myAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onLeftCardExit(Object dataObject) {
-                ToastUtil.showToast(MainActivity.this, "不喜欢", Gravity.BOTTOM);
-            }
-
-            @Override
-            public void onRightCardExit(Object dataObject) {
-                String userObjId = ((HashMap<String, String>) dataObject).get("userObjId");
-                String nick = ((HashMap<String, String>) dataObject).get("nick");
-                Integer age = ((HashMap<String, Integer>) dataObject).get("age");
-                Integer gender = ((HashMap<String, Integer>) dataObject).get("gender");
-                String location = ((HashMap<String, String>) dataObject).get("location");
-                Uri img = ((HashMap<String, Uri>) dataObject).get("img");
-                String sign = ((HashMap<String, String>) dataObject).get("sign");
-
-                Person person_i_like = new Person();
-                person_i_like.setObjectId(userObjId);
-                person_i_like.setNick(nick);
-                person_i_like.setAge(age);
-                person_i_like.setGender(gender);
-                person_i_like.setLocation(location);
-                person_i_like.setAvatar(img.toString());
-                person_i_like.setSign(sign);
-
-                updatePersonContacts(person_i_like);
-                ToastUtil.showToast(MainActivity.this, "喜欢", Gravity.BOTTOM);
-            }
-
-            @Override
-            public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                Log.i(TAG, "itemsInAdapter: " + itemsInAdapter);
-                // Ask for more data here
-                myAdapter.notifyDataSetChanged();
-                i++;
-            }
-
-            @Override
-            public void onScroll(float scrollProgressPercent) {
-                View view = flingContainer.getSelectedView();
-                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
-                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
-            }
-        });
-
-        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClicked(int itemPosition, Object dataObject) {
-
-            }
-        });
-
-    }
+//    private void initSwipeView(){
+//        flingContainer = (SwipeFlingAdapterView)findViewById(R.id.frame1);
+//        leftBtn = (Button)findViewById(R.id.left);
+//        rightBtn = (Button)findViewById(R.id.right);
+//        centerBtn = (Button)findViewById(R.id.center);
+//        leftBtn.setOnClickListener(this);
+//        rightBtn.setOnClickListener(this);
+//        centerBtn.setOnClickListener(this);
+//
+//        mData = getAllData();
+//
+//        final MyAdapter myAdapter = new MyAdapter(getApplicationContext(), mData);
+//        flingContainer.setAdapter(myAdapter);
+//        flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
+//            @Override
+//            public void removeFirstObjectInAdapter() {
+//                if (mData.size() > 0) {
+//                    mData.remove(0);
+//                }
+//
+//                myAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onLeftCardExit(Object dataObject) {
+//                ToastUtil.showToast(MainActivity.this, "不喜欢", Gravity.BOTTOM);
+//            }
+//
+//            @Override
+//            public void onRightCardExit(Object dataObject) {
+//                String userObjId = ((HashMap<String, String>) dataObject).get("userObjId");
+//                String nick = ((HashMap<String, String>) dataObject).get("nick");
+//                Integer age = ((HashMap<String, Integer>) dataObject).get("age");
+//                Integer gender = ((HashMap<String, Integer>) dataObject).get("gender");
+//                String location = ((HashMap<String, String>) dataObject).get("location");
+//                Uri img = ((HashMap<String, Uri>) dataObject).get("img");
+//                String sign = ((HashMap<String, String>) dataObject).get("sign");
+//
+//                Person person_i_like = new Person();
+//                person_i_like.setObjectId(userObjId);
+//                person_i_like.setNick(nick);
+//                person_i_like.setAge(age);
+//                person_i_like.setGender(gender);
+//                person_i_like.setLocation(location);
+//                person_i_like.setAvatar(img.toString());
+//                person_i_like.setSign(sign);
+//
+//                updatePersonContacts(person_i_like);
+//                ToastUtil.showToast(MainActivity.this, "喜欢", Gravity.BOTTOM);
+//            }
+//
+//            @Override
+//            public void onAdapterAboutToEmpty(int itemsInAdapter) {
+//                Log.i(TAG, "itemsInAdapter: " + itemsInAdapter);
+//                // Ask for more data here
+//                myAdapter.notifyDataSetChanged();
+//                i++;
+//            }
+//
+//            @Override
+//            public void onScroll(float scrollProgressPercent) {
+//                View view = flingContainer.getSelectedView();
+//                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
+//                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
+//            }
+//        });
+//
+//        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClicked(int itemPosition, Object dataObject) {
+//
+//            }
+//        });
+//
+//    }
 
     private void updatePersonContacts(Person person_i_like){
         Person person = new Person();
@@ -351,13 +362,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return list;
     }
 
-    public void right(){
-        flingContainer.getTopCardListener().selectRight();
-    }
-
-    public void left(){
-        flingContainer.getTopCardListener().selectLeft();
-    }
+//    public void right(){
+//        flingContainer.getTopCardListener().selectRight();
+//    }
+//
+//    public void left(){
+//        flingContainer.getTopCardListener().selectLeft();
+//    }
 
     /**
      * 响应手机返回键，任务进入后台
@@ -394,10 +405,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SettingsActivity.skipTo(this);
                 break;
             case R.id.left:
-                left();
+                //left();
                 break;
             case R.id.right:
-                right();
+                //right();
                 break;
             case R.id.center:
                 break;

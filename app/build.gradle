@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '24'
 
     //**bmob-sdk:3.4.6版本依赖包，用于兼容Android6.0系统**
     useLibrary 'org.apache.http.legacy'
@@ -60,4 +60,5 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 
+    compile 'com.facebook.rebound:rebound:0.3.8'
 }

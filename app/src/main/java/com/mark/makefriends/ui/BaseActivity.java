@@ -2,9 +2,12 @@ package com.mark.makefriends.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,12 +18,15 @@ import com.mark.makefriends.R;
 /**
  * Created by Administrator on 2016/5/3.
  */
-public class BaseActivity extends Activity implements View.OnTouchListener{
+public class BaseActivity extends FragmentActivity implements View.OnTouchListener{
     private ProgressDialog pd;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("finishApp");
+        registerReceiver(mFinishReceiver, filter);
     }
 
     @Override
@@ -77,5 +83,15 @@ public class BaseActivity extends Activity implements View.OnTouchListener{
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    private BroadcastReceiver mFinishReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("finishApp".equals(intent.getAction())){
+                finish();
+                System.exit(0);
+            }
+        }
+    };
 
 }
