@@ -51,7 +51,8 @@
         <!--定位需要的服务-->
         <service android:name="com.amap.api.location.APSService"/>
 
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.LoginActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +60,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RegisterActivity"/>
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.MainActivity"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".ui.CompleteUserInfoActivity"/>
         <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
         <activity android:name=".ui.FindPasswordActivity"/>
