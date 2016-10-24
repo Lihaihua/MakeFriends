@@ -30,6 +30,7 @@ public class CardItemView extends FrameLayout {
     private TextView userNameTv;
     private TextView imageNumTv;
     private TextView likeNumTv;
+    private TextView otherDescriptionTv;
     private CardSlidePanel parentView;
     private View topLayout, bottomLayout;
 
@@ -49,6 +50,7 @@ public class CardItemView extends FrameLayout {
         userNameTv = (TextView) findViewById(R.id.card_user_name);
         imageNumTv = (TextView) findViewById(R.id.card_pic_num);
         likeNumTv = (TextView) findViewById(R.id.card_like);
+        otherDescriptionTv = (TextView)findViewById(R.id.card_other_description);
         topLayout = findViewById(R.id.card_top_layout);
         bottomLayout = findViewById(R.id.card_bottom_layout);
         initSpring();
@@ -88,6 +90,7 @@ public class CardItemView extends FrameLayout {
         userNameTv.setText(itemData.userName);
         imageNumTv.setText(itemData.imageNum + "");
         likeNumTv.setText(itemData.likeNum + "");
+        otherDescriptionTv.setText(itemData.location);
     }
 
 

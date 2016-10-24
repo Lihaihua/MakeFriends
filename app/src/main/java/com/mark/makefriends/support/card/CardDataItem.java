@@ -8,6 +8,7 @@ package com.mark.makefriends.support.card;
 public class CardDataItem {
     String imagePath;
     String userName;
+    String location;
     int likeNum;
     int imageNum;
 }

@@ -96,6 +96,7 @@ public class CardFragment extends Fragment {
             dataItem.imagePath = person.getAvatar();
             dataItem.likeNum = (int)(Math.random()*10);
             dataItem.imageNum = (int)(Math.random()*6);
+            dataItem.location = person.getLocation();
             dataList.add(dataItem);
         }
 //        int num = imagePaths.length;
