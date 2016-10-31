@@ -69,7 +69,7 @@ public class MyApplication extends Application{
             //NewIM初始化,初始化方法包含了BmobSDK的初始化步骤，故无需再初始化BmobSDK
             BmobIM.init(this);
             //注册消息接收器
-            BmobIM.registerDefaultMessageHandler(new MessageHandler());
+            BmobIM.registerDefaultMessageHandler(new MessageHandler(this));
         }
 
         //初始化定位

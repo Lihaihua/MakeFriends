@@ -44,7 +44,7 @@ public class CardSlidePanel extends ViewGroup {
     private View bottomLayout; // 卡片下边的三个按钮布局
 
     private int itemMarginTop = 10; // 卡片距离顶部的偏移量
-    private int bottomMarginTop = 40; // 底部按钮与卡片的margin值
+    private int bottomMarginTop = 200; // 底部按钮与卡片的margin值
     private int yOffsetStep = 70; // view叠加垂直偏移量的步长
     private int mTouchSlop = 5; // 判定为滑动的阈值，单位是像素
 

@@ -78,8 +78,6 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
         ll_back.setOnClickListener(this);
 
         roleHead = (ImageView)findViewById(R.id.role_head);
-        maleBtn = (ImageButton)findViewById(R.id.maleBtn);
-        femaleBtn = (ImageButton)findViewById(R.id.femaleBtn);
         checkBtn = (Button)findViewById(R.id.checkBtn);
         fl_select_pic_type = (View)findViewById(R.id.fl_select_pic_type);
 
@@ -298,16 +296,6 @@ public class CompleteUserInfoActivity extends BaseActivity implements View.OnCli
                 roleHead.setImageDrawable(null);
                 //fl_select_pic_type.setVisibility(View.VISIBLE);
                 Crop.pickImage(this);
-                break;
-            case R.id.maleBtn:
-                sex = gender.MALE;
-                maleBtn.setSelected(true);
-                femaleBtn.setSelected(false);
-                break;
-            case R.id.femaleBtn:
-                sex = gender.FEMALE;
-                maleBtn.setSelected(false);
-                femaleBtn.setSelected(true);
                 break;
             case R.id.checkBtn:
                 showProgressDialog("正在上传头像...");

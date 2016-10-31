@@ -14,12 +14,6 @@
         <item name="cropImageStyle">@style/Widget.CropImageView</item>
     </style>
 
-    <style name="SwipeFlingTheme">
-        <item name="rotation_degrees">15</item>
-        <item name="min_adapter_stack">6</item>
-        <item name="max_visible">4</item>
-    </style>
-
     <style name="Widget.CropImageView" parent="android:Widget">
         <item name="showThirds">true</item>
         <item name="showCircle">false</item>

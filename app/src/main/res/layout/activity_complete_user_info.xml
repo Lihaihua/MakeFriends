@@ -25,18 +25,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:visibility="gone">
-            <ImageButton
-                android:id="@+id/maleBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:src="@drawable/selector_male"/>
-            <ImageButton
-                android:id="@+id/femaleBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:src="@drawable/selector_female"/>
+
 
         </LinearLayout>
         <LinearLayout

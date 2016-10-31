@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.mark.makefriends.MyApplication;
 import com.mark.makefriends.R;
-import com.mark.makefriends.adapter.MyAdapter;
 import com.mark.makefriends.bean.Person;
 import com.mark.makefriends.bean.User;
 import com.mark.makefriends.event.LocationEvent;
@@ -35,7 +34,6 @@ import com.mark.makefriends.utils.BitmapUtil;
 import com.mark.makefriends.utils.IMMLeaks;
 import com.mark.makefriends.utils.MyApp;
 import com.mark.makefriends.utils.ToastUtil;
-import com.mark.mylibrary.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,10 +70,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private static final String TAG = "MainActivity";
     private int i;
-    //private SwipeFlingAdapterView flingContainer;
-    //private Button leftBtn;
-    //private Button rightBtn;
-    //private Button centerBtn;
     private List<Map<String, Object>> mData;
 
     private Activity mActivity;
@@ -100,7 +94,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mActivity = this;
 
         initDrawerView();
-        //initSwipeView();
 
         //connect server
         User user = BmobUser.getCurrentUser(this, User.class);
@@ -224,82 +217,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setting.setOnClickListener(this);
     }
 
-//    private void initSwipeView(){
-//        flingContainer = (SwipeFlingAdapterView)findViewById(R.id.frame1);
-//        leftBtn = (Button)findViewById(R.id.left);
-//        rightBtn = (Button)findViewById(R.id.right);
-//        centerBtn = (Button)findViewById(R.id.center);
-//        leftBtn.setOnClickListener(this);
-//        rightBtn.setOnClickListener(this);
-//        centerBtn.setOnClickListener(this);
-//
-//        mData = getAllData();
-//
-//        final MyAdapter myAdapter = new MyAdapter(getApplicationContext(), mData);
-//        flingContainer.setAdapter(myAdapter);
-//        flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
-//            @Override
-//            public void removeFirstObjectInAdapter() {
-//                if (mData.size() > 0) {
-//                    mData.remove(0);
-//                }
-//
-//                myAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onLeftCardExit(Object dataObject) {
-//                ToastUtil.showToast(MainActivity.this, "不喜欢", Gravity.BOTTOM);
-//            }
-//
-//            @Override
-//            public void onRightCardExit(Object dataObject) {
-//                String userObjId = ((HashMap<String, String>) dataObject).get("userObjId");
-//                String nick = ((HashMap<String, String>) dataObject).get("nick");
-//                Integer age = ((HashMap<String, Integer>) dataObject).get("age");
-//                Integer gender = ((HashMap<String, Integer>) dataObject).get("gender");
-//                String location = ((HashMap<String, String>) dataObject).get("location");
-//                Uri img = ((HashMap<String, Uri>) dataObject).get("img");
-//                String sign = ((HashMap<String, String>) dataObject).get("sign");
-//
-//                Person person_i_like = new Person();
-//                person_i_like.setObjectId(userObjId);
-//                person_i_like.setNick(nick);
-//                person_i_like.setAge(age);
-//                person_i_like.setGender(gender);
-//                person_i_like.setLocation(location);
-//                person_i_like.setAvatar(img.toString());
-//                person_i_like.setSign(sign);
-//
-//                updatePersonContacts(person_i_like);
-//                ToastUtil.showToast(MainActivity.this, "喜欢", Gravity.BOTTOM);
-//            }
-//
-//            @Override
-//            public void onAdapterAboutToEmpty(int itemsInAdapter) {
-//                Log.i(TAG, "itemsInAdapter: " + itemsInAdapter);
-//                // Ask for more data here
-//                myAdapter.notifyDataSetChanged();
-//                i++;
-//            }
-//
-//            @Override
-//            public void onScroll(float scrollProgressPercent) {
-//                View view = flingContainer.getSelectedView();
-//                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
-//                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
-//            }
-//        });
-//
-//        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClicked(int itemPosition, Object dataObject) {
-//
-//            }
-//        });
-//
-//    }
-
     private void updatePersonContacts(Person person_i_like){
         Person person = new Person();
 
@@ -403,12 +320,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.setting:
                 SettingsActivity.skipTo(this);
-                break;
-            case R.id.left:
-                //left();
-                break;
-            case R.id.right:
-                //right();
                 break;
             case R.id.center:
                 break;

@@ -26,6 +26,7 @@ import com.mark.makefriends.R;
 public class CardItemView extends FrameLayout {
     private Spring springX, springY;
     public ImageView imageView;
+    private ImageView genderIv;
     public View maskView;
     private TextView userNameTv;
     private TextView imageNumTv;
@@ -46,6 +47,7 @@ public class CardItemView extends FrameLayout {
         super(context, attrs, defStyle);
         inflate(context, R.layout.card_item, this);
         imageView = (ImageView) findViewById(R.id.card_image_view);
+        genderIv = (ImageView)findViewById(R.id.gender);
         maskView = findViewById(R.id.maskView);
         userNameTv = (TextView) findViewById(R.id.card_user_name);
         imageNumTv = (TextView) findViewById(R.id.card_pic_num);
@@ -87,6 +89,12 @@ public class CardItemView extends FrameLayout {
             return;
         }
         imageView.setImageURI(Uri.parse(itemData.imagePath));
+        if (itemData.gender == 0){
+            genderIv.setImageResource(R.drawable.male);
+        }else {
+            genderIv.setImageResource(R.drawable.female);
+        }
+
         userNameTv.setText(itemData.userName);
         imageNumTv.setText(itemData.imageNum + "");
         likeNumTv.setText(itemData.likeNum + "");
